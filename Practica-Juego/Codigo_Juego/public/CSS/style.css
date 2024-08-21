@@ -1,0 +1,47 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Jersey+10&family=Permanent+Marker&display=swap');
+body {
+    
+    font-family: "Permanent Marker", cursive;
+    background-color: hsl(207, 76%, 68%);
+    
+} 
+#seleccionar-personaje {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+    align-items: center;
+}
+.titulo {
+    
+    color:cornsilk;
+    font-size: 55px;
+    
+}
+.imagen {
+    border-radius: 10px;
+}
+.subtitulo {
+    color:cornsilk;
+}
+
+.personajes {
+    width: 100px;
+    height: 100px;
+    background: thistle;
+    padding: 10px;
+    box-sizing: border-box;
+    margin: 10px;
+    border-radius: 20px;
+}
+
+.avatares {
+    display: flex;
+}
+
+input {
+
+
+}
+   
