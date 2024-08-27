@@ -1,9 +1,13 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Jersey+10&family=Permanent+Marker&display=swap');
+
 body {
     
     font-family: "Permanent Marker", cursive;
     background-color: hsl(207, 76%, 68%);
+    background-image: linear-gradient(hsl(207, 76%, 18%),white);
+    margin: 0; 
+    padding: 0;
     
 } 
 #seleccionar-personaje {
@@ -12,36 +16,160 @@ body {
     justify-content: center;
     height: 100vh;
     align-items: center;
+    text-align: center;
 }
 .titulo {
     
     color:cornsilk;
     font-size: 55px;
+    margin-bottom: 20px;;
     
 }
-.imagen {
-    border-radius: 10px;
+body img {
+    border-radius: 20px;
+    width: 100%;
+    max-width: 300px;
+    
 }
 .subtitulo {
     color:cornsilk;
+    font-size: 32px;
+    margin: 10px 0;
 }
 
 .personajes {
-    width: 100px;
+    width: 160px;
     height: 100px;
     background: thistle;
     padding: 10px;
     box-sizing: border-box;
     margin: 10px;
     border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.personajes img {
+    width: 70px;
+    border-radius: 10px;
+    height: auto;
 }
 
 .avatares {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 input {
-
+    display: none;
 
 }
-   
+
+#boton-personaje {
+    width: 200px;
+    height: 40px;
+    border-radius: 20px;
+    background: transparent;
+    border: 4px solid white;
+    color: white;
+    font-size: 20px;
+    margin: 20px;
+    cursor: pointer;
+}
+
+#seleccionar-ataque {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    height: auto;
+    
+}
+.ataque {
+    width: 170px;
+    height: 130px;
+    background: transparent;
+    font-family: "Permanent Marker", cursive;
+    padding: 10px;
+    box-sizing: border-box;
+    margin: 10px;
+    border-radius: 20px;
+    border-color: transparent;
+    cursor: pointer;
+}
+
+.ataque img {
+    width: 150px;
+    height: auto;
+    margin: 5px;
+}
+
+#mensajes {
+    width: 100%;
+    max-width: 600px;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    margin-top: 20px;
+    flex-direction: column;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+#boton-reiniciar {
+    border: none;
+    color: black;
+    font-family: "Permanent Marker", cursive;
+    font-size: 20px;
+    background: transparent;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+/* Estilos para móviles */
+@media only screen and (max-width: 600px) {
+    body {
+        background-image: linear-gradient(hsl(207, 76%, 28%), white);
+        font-size: 14px;
+    }
+
+    .titulo {
+        font-size: 32px;
+    }
+
+    .subtitulo {
+        font-size: 20px;
+    }
+
+    .personajes {
+        width: 120px;
+        height: 80px;
+        padding: 5px;
+        margin: 5px;
+    }
+
+    .personajes img {
+        width: 50px;
+    }
+
+    #boton-personaje {
+        width: 150px;
+        height: 35px;
+        font-size: 16px;
+    }
+
+    .ataque {
+        width: 140px;
+        height: 100px;
+        margin: 5px;
+        padding: 5px;
+    }
+
+    .ataque img {
+        width: 120px;
+        height: auto;
+    }
+}
