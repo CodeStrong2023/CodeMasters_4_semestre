@@ -1,0 +1,10 @@
+04:57:46 PM:DEBUG [cursor_del_pool.py:28] Creación del pool exitosa: <psycopg2.pool.SimpleConnectionPool object at 0x00000199FB061F10>
+04:57:46 PM:DEBUG [cursor_del_pool.py:59] Conexión obtenida del pool: <connection object at 0x00000199FCBF2240; dsn: 'user=postgres password=xxx dbname=test_bd host=localhost port=5433', closed: 0>
+04:57:46 PM:DEBUG [cursor_del_pool.py:49] Tabla usuario creada o ya existente
+04:57:46 PM:DEBUG [cursor_del_pool.py:65] Regresamos la conexión al pool: <connection object at 0x00000199FCBF2240; dsn: 'user=postgres password=xxx dbname=test_bd host=localhost port=5433', closed: 0>
+04:57:55 PM:DEBUG [cursor_del_pool.py:59] Conexión obtenida del pool: <connection object at 0x00000199FCBF2240; dsn: 'user=postgres password=xxx dbname=test_bd host=localhost port=5433', closed: 0>
+04:57:55 PM:DEBUG [Usuario_dao.py:14] Seleccionando usuarios
+04:57:55 PM:DEBUG [cursor_del_pool.py:102] Commit de la transacción
+04:57:55 PM:DEBUG [cursor_del_pool.py:65] Regresamos la conexión al pool: <connection object at 0x00000199FCBF2240; dsn: 'user=postgres password=xxx dbname=test_bd host=localhost port=5433', closed: 0>
+04:57:55 PM:INFO [menu_app_usuario.py:28] Usuario: 1 user1 123
+04:57:55 PM:INFO [menu_app_usuario.py:28] Usuario: 4 user4 456
