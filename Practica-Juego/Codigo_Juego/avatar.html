@@ -2,6 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> //
         <title>LA LEYENDA DE AANG: AVATAR</title>
         <link rel="stylesheet" href="/public/CSS/style.css">
     </head>
@@ -9,22 +10,42 @@
         <section id="seleccionar-personaje">
             <h1 class="titulo">EL AVATAR!</h1> <!--Esto es estatico, NO cambia, el h1 se utiliza una vez-->
             <div class="imagen">
-                <img src="/IMAGENES/_987ea3d9-437d-49f7-9ae5-9a6e622ce55a.jpeg" alt="Presentación de los personajes" width="300" height="300">
+                <img src="/IMAGENES/_987ea3d9-437d-49f7-9ae5-9a6e622ce55a.jpeg" alt="Presentación de los personajes">
             </div>
+            <!-- <div class="reglas-juego"> 
+             creamos una sección para añadir las reglas del juego, utilizando la etiquetas <ol> y <li> para obtener una lista ordenada
+                <h3>Reglas de Juego</h3>
+                <ol style="font-size: 12px;">
+                    <li>Primer paso: "Selecciona un Personaje", cada uno cuenta con 3 vidas</li>
+                    <li>Segundo paso: "Elige tu ataque", ten en cuenta que:
+                        <p>🤜🏽 vence a 👣, que 🦵🏽 vence a 🤜🏽 y que 👣 vence a 🦵🏽</p>  
+                    </li>
+                    <li>Tercer paso: "DIVIERTETE EN EL COMBATE"</li>
+                    <li>Cuarto paso: Reiniciar el juego para otro divertido combate</li>
+                </ol>
+            <div/=>-->
 
             <h2 class="subtitulo">Elige tu Personaje</h2>
 
             <div class="avatares">
-                <label class="personajes" for="zuko">Zuko</label> <!--Esta etiqueta es para darle un indicador a los usuarios de que están seleccionando-->
+                <label class="personajes" for="zuko">Zuko
+                    <img src="/IMAGENES/personajes-juego/personaje1.png"/>
+                </label> <!--Esta etiqueta es para darle un indicador a los usuarios de que están seleccionando-->
                 <input type="radio" name="personaje" id="zuko"/> <!-- name es para agrupar todos los imputs y poder seleccionar-->
 
-                <label class="personajes" for="katara">Katara</label> <!--El atributo for ayuda a vincular un label con un imput a través del mismo id-->
+                <label class="personajes" for="katara">Katara
+                    <img src="/IMAGENES/personajes-juego/personaje2.png"/>
+                </label> <!--El atributo for ayuda a vincular un label con un imput a través del mismo id-->
                 <input type="radio" name="personaje" id="katara"/> <!--Acá van los personajes-->
 
-                <label class="personajes" for="aang">Aang</label>
+                <label class="personajes" for="aang">Aang
+                    <img src="/IMAGENES/personajes-juego/personaje3.png"/>
+                </label>
                 <input type="radio" name="personaje" id="aang"/> <!--Le damos un atributo id para saber cual es el valor de cada uno-->
 
-                <label class="personajes" for="toph">Toph</label>
+                <label class="personajes" for="toph">Toph
+                    <img src="/IMAGENES/personajes-juego/personaje4.png">
+                </label>
                 <input type="radio" name="personaje" id="toph"/>
             </div>
 
@@ -34,36 +55,40 @@
 
         <section id="seleccionar-ataque">
             <h1 class="titulo">EL AVATAR!</h1>
-            <h2>Elige tu ataque</h2> <!--Se puede utilizar varias veces-->
-            <p>Tu personaje <span id="personaje-jugador"></span> tiene <span id="vidas-jugador">3</span> vidas</p> <!--Pero esto debe ser dinamico, necesitamos que cambie-->
-            <p>El personaje del enemigo <span id="personaje-enemigo"></span> tiene <span id="vidas-enemigo">3</span> vidas</p> <!--Con la etiqueta spam vamos a modificar el 3 con JS-->
-            <p>
-                <button id="boton-punio"> 🤜🏽</button>
-                <button id="boton-patada"> 🦵🏽 </button>
-                <button id="boton-barrida"> 👣 </button>
+
+            <h2 class="subtitulo">Elige tu Ataque</h2> <!--Se puede utilizar varias veces-->
+
+            <div> 
+                <button id= "boton-punio" class="ataque">Puño
+                    <img src="/IMAGENES/golpes/_619731e5-0beb-46f6-9c64-bd4bda90b3f6.jpeg"/></button>
+
+                <button id="boton-patada" class="ataque">Patada
+                    <img src="/IMAGENES/golpes/_3b376025-3cde-4f3a-ba5d-a3b5ea30a8a4.jpeg"/> </button>
+                    
+                    
+                <button id="boton-barrida" class="ataque">Barrida
+                    <img src="/IMAGENES/golpes/_06803b4d-255b-46fc-809f-64268aeaa806.jpeg"></button>
+            </div>
+
+            <div id="mensajes">
+                <p id="resultado">Mucha suerte!!!</p>
+
+                <section id="reiniciar">
+                    <button
+                    id="boton-reiniciar">Reiniciar</button>
+                </section>
+            </div>
                 
-            </p>
+           
+    
+            <div>
+                <div id="ataques-del-jugador"></div>
+                <div id="ataques-del-enemigo"></div>
+                <p>Tu personaje<span id="personaje-jugador"></span> tiene <span id="vidas-jugador">3</span> vidas</p> <!--Pero esto debe ser dinamico, necesitamos que cambie-->
+                <p>El personaje del enemigo <span id="personaje-enemigo"></span> tiene <span id="vidas-enemigo">3</span> vidas</p> <!--Con la etiqueta spam vamos a modificar el 3 con JS-->
+            </div>
         </section>
-
-        <section id="mensajes"> <!--Será un párrafo dinamico-->
-            
-        </section>
-
-        <section id="reiniciar">
-            <button id="boton-reiniciar">Reiniciar</button>
-        </section>
-
-        <section id="reglas-juego"> <!--creamos una sección para añadir las reglas del juego, utilizando la etiquetas <ol> y <li> para obtener una lista ordenada-->
-            <h3>Reglas de Juego</h3>
-            <ol style="font-size: 12px;">
-                <li>Primer paso: "Selecciona un Personaje", cada uno cuenta con 3 vidas</li>
-                <li>Segundo paso: "Elige tu ataque", ten en cuenta que:
-                    <p>🤜🏽 vence a 👣, que 🦵🏽 vence a 🤜🏽 y que 👣 vence a 🦵🏽</p>  
-                </li>
-                <li>Tercer paso: "DIVIERTETE EN EL COMBATE"</li>
-                <li>Cuarto paso: Reiniciar el juego para otro divertido combate</li>
-            </ol>
-        </section>
+        
         <script src="/public/JS/avatar.js"></script>
     </body>
 </html>

@@ -1,0 +1,49 @@
+Conceptos de Diseño
+Preparación (investigar, recopilar) 
+Incubación (experimentar, sintetizar)
+Iluminación (Idear, Imaginar, crear) 
+Evaluación (Criticar, replantear, debatir)  
+Implementación (Construir, trabajar)
+
+Conceptos básicos de la composición en diseño:
+1)	Balance:  Posición de cada elemento, dada por su peso visual ya sea simétrico o asimétrico.
+2)	Contraste: Señalar un concepto marca por la diferencia entre dos elementos distintos. Ej: Algo distinto a claro es oscuro.
+3)	Alineación: crear rutas visuales.
+4)	Proximidad: Saber agrupar los elementos.
+5)	Repetición: Saber hacer uso del espacio disponible.
+
+Diseño Responsivo:
+Es una metodología para crear un diseño que sea adaptable entre los diferentes tamaños de pantallas (dispositivos móviles, Tablet, computadoras). Separa las capas de contenido y funcionalidad. Usa sistemas de grillas y columnas.
+
+Diferentes metodologías:
+Mejora progresiva: Se parte de una base sólida(pantalla), teniendo los elementos básicos. Estas bases pueden mejorar con capas de complejidad según las especificaciones del sistema. (Pantalla móvil a PC)
+Degradación agraciada: Se parte de una versión completa que le retiramos mejoras para poder migrar entre las especificaciones del sistema y el dispositivo. (PC a Pantalla móvil) (RECOMENDABLE UNA VEZ TERMINADO EL DISEÑO)
+
+Accesibilidad:
+	Asegurar el acceso a todas las personas sin importar alguna discapacidad esencial. (Es obligatoria en todas las webs)
+
+Tips:
+•	Usar los encabezados correctos.
+•	Usar fuentes legibles y de tamaño legible.
+•	Usar el contraste de colores adecuado.
+•	Garantizar que el color no sea la única forma de resaltar un contenido.
+•	Diseña teniendo en cuenta los estados “Focos” del componente.
+•	Añadir etiquetas y textos descriptivos según sea necesario (Formularios generalmente).
+•	Descripciones de contenido que pueda remplazar videos e imágenes.
+•	Evitar que las animaciones bloqueen el contenido.
+
+Brief y Requerimientos técnicos:
+Es la hoja de ruta para empezar a diseñar. 
+
+    Secciones:
+    •	Descripción de la empresa o cliente.
+    •	Objetos o retos.
+    •	Target o audiencia
+    •	Competencia
+    •	Distribución
+    
+¿Cuál es la necesidad, desafío o problema a solucionar?
+¿Qué se espera lograr?
+¿A quién se va a impactar?
+¿Cuáles son los beneficios que se van a obtener?
+¿Como se va a comunicar?
