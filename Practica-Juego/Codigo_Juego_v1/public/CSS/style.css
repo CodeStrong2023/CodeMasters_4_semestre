@@ -1,0 +1,252 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Jersey+10&family=Permanent+Marker&display=swap');
+
+body {
+    
+    font-family: "Permanent Marker", cursive;
+    background-color: hsl(207, 76%, 68%);
+    background-image: linear-gradient(hsl(207, 76%, 18%),white);
+    margin: 0; 
+    padding: 0;
+    
+} 
+#seleccionar-personaje {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+    align-items: center;
+    text-align: center;
+}
+.titulo {
+    
+    color:cornsilk;
+    font-size: 55px;
+    margin-bottom: 20px;;
+    
+}
+body img {
+    border-radius: 20px;
+    width: 100%;
+    max-width: 300px;
+    
+}
+.subtitulo {
+    color:cornsilk;
+    font-size: 32px;
+    margin: 10px 0;
+}
+
+.avatares, .avatares-ataques {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.personajes {
+    width: 160px;
+    height: 100px;
+    background: thistle;
+    padding: 10px;
+    box-sizing: border-box;
+    margin: 10px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.personajes img {
+    width: 70px;
+    border-radius: 10px;
+    height: auto;
+}
+
+
+input {
+    display: none;
+
+}
+
+input:checked + label{
+    background-color: aqua;
+}
+
+#boton-personaje {
+    width: 200px;
+    height: 40px;
+    border-radius: 20px;
+    border: 4px solid white;
+    color: white;
+    font-size: 20px;
+    margin: 20px;
+    cursor: pointer;
+    background: linear-gradient(to right,  rgb(27, 172, 172), rgb(71, 230, 230));
+    transition: 0.3s;
+}
+#boton-personaje:hover {
+    transform: translate(6px);
+}
+
+#seleccionar-personaje, #seleccionar-ataque {
+    transition: opacity 0.5s ease;
+}
+
+.hidden {
+    display: none;
+}
+
+#reglas-juego{
+    display: block;
+    width: 750px;
+    font-size: 16px;
+    margin: auto;
+}
+
+#reglas {
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid #000;
+    background-color: #f0f0f0;
+}
+
+#boton-reglas{
+    background: linear-gradient(to right,  rgb(27, 172, 172), rgb(71, 230, 230));
+    color: white;
+    border: transparent;
+}
+
+
+#seleccionar-ataque {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    height: 620px;
+    
+}
+.ataque {
+    width: 170px;
+    height: 130px;
+    background: transparent;
+    font-family: "Permanent Marker", cursive;
+    padding: 10px;
+    box-sizing: border-box;
+    margin: 10px;
+    border-radius: 20px;
+    border-color: transparent;
+    cursor: pointer;
+}
+
+.ataque img {
+    width: 100px;
+    height: 100px;
+    margin: 5px;
+    
+    transition: 0.3s;
+}
+
+.ataque img:hover {
+    transform: translate(6px);
+}
+
+.ataque img:checked + button{
+    background-color: aqua;
+}
+
+p#vidas-jugador, p#vidas-enemigo{
+    font-size: 36px;
+}
+
+#mensajes {
+    width: 100%;
+    max-width: 600px;
+    align-items: center;
+    font-size: 18px;
+    margin:auto;
+    flex-direction: column;
+    padding:10px;
+    box-sizing: border-box;
+}
+
+
+#boton-reiniciar {
+    border: none;
+    color: black;
+    font-family: "Permanent Marker", cursive;
+    font-size: 20px;
+    background-color: rgb(71, 230, 230) ;
+    color: white;
+    cursor: pointer;
+    margin: 0 auto;
+    border-radius: 10px;
+    padding: 10px 20px;
+    display: block;
+}
+
+#boton-reiniciar:hover {
+    background-color: rgb(27, 172, 172);
+}
+
+.jugada {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    width: 300px;
+    height: 150px;
+}
+
+.jugada-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    width: 100%;
+    height: 320px;
+    max-width: 600px;
+}
+
+.jugada-jugador, .jugada-enemigo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 150px;
+}
+
+#vidas-jugador, #vidas-enemigo {
+    margin: 10px;
+}
+
+#personaje-jugador, #personaje-enemigo {
+    font-size: 25px;
+}
+
+
+.contenedor-scroll {
+    width: 80%; /* Ajusta este valor según necesites */
+    max-height: 360px; /* Altura máxima antes de que aparezca el scroll */
+    overflow-y: scroll;
+    margin: 0 auto; /* Centra el contenedor horizontalmente */
+    border: 1px solid #ccc; /* Opcional, para que sea más visible */
+    padding: 10px; /* Opcional, para un poco de espacio interior */
+    box-sizing: border-box; /* Para incluir padding y border en el ancho total */
+}
+
+#mensaje-final {
+    text-align: center;
+    margin-top: 20px;
+    height: 160px;
+    margin: 20px;
+    border: 20px;
+    padding: 10px;
+}
+
+
+/* Estilos para móviles */
+@media (max-width: 360px) {
+    .avatares, .avatares-ataques {
+        flex-direction: column;
+    }
+
+   
+}
