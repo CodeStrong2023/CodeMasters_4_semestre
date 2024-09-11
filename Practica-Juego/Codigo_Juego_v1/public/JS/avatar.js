@@ -1,4 +1,4 @@
-// Array de personajes disponibles
+
 const personajes = ['Zuko', 'Katara', 'Aang', 'Toph'];
 // Array de ataques disponibles
 const ataques = ['Punio', 'Patada', 'Barrida'];
