@@ -1,0 +1,32 @@
+CLASE N°2
+
+UX (Use Experience)
+	Es el diseño que se enfoca en los usuarios y su accesibilidad. Que nuestras acciones en las páginas sean amables.
+
+Etapas del diseño UX:
+1)	Investigación: Recopilar datos de como se comporta el usuario.
+2)	Análisis: Analizar la información agruparla según los objetivos hacia el usuario.
+3)	Diseño: Crear prototipos, flujos de usuario para visualizar las mejoras para el producto final.
+4)	Pruebas de usuario: Se realizan pruebas con sketches para ver la interacción con el usuario con el producto final.
+
+Diagrama de flujo
+	Es donde tenemos el objetivo, alcances del cliente y los requerimientos para lograr el proyecto. Nos permite llevar los requerimientos de nuestro brief a elementos tangibles.
+
+Wireframes
+	Son planos o bosquejos de nuestra aplicación que no aparecen en el diagrama de flujo. No es necesario utilizar un software especifico. No se utilizan colores son bocetos en blanco y negro o tonos grises. Tiene dos tipos:
+	Bajo nivel – a mano
+	Alto nivel – en un programa
+
+Diseño UI (Interfaz del usuario)
+	Se encarga de las capas del diseño de la interfaz del usuario por encima de la estructura. Es el diseño visual, colores, layoust y tipografías.
+
+Moodboard
+	Su traducción literal es mapa de inspiración de referencias visuales, un tablero o un documento. Empezamos a recopilar referencias, es una herramienta creativa que consiste en una visualización rápida de imágenes y palabras en un mismo soporte.
+
+Psicología del color
+	Es un área que estudia como nuestro cerebro reacciona, percibe y asocia los colores a conceptos o sentimientos. 
+	Utiliza colores RGB (pantalla) y hexadecimales.
+	Crea un código de color consistente.
+	Menos, es más. No usar tantos colores esto distrae al usuario y no lo ayuda a enfocarse en  sus acciones.
+	Asegurar que la elección de color sea accesible.
+	Definir una paleta de color.

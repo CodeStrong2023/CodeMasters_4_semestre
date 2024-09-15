@@ -1,0 +1,46 @@
+HTML:
+LENGUAJE DE MAQUETACIÓN HTML
+° Es un lenguaje usado para desarrollar una página web.
+° Su nombre proviene de las siglas Hyoer text markup languje: marcado de hipertexto
+° Cuando decimos que es un archivo de hipertexto es porque contiene texto oculto dentro de etiquetas
+    -Etiquetas:
+    son palabras claves encerradas dentro de los siguientes signos <></>
+° Estructuras de una página web: hace uso de etiquetas y atributos predefinidos para indicar al navegador cómo mostrar su contenido:
+
+    -<!Doctype html>:su función es facilitar información al servidor web.
+
+    -<html></html>: es la que va a encerrar todo el documento de la página web construido en HTML.
+
+    -<head<</head>: es una etiqueta par, va a definir la cabecara del documento conteniendo información como; metadatos, script, estilos, ubicación, ect.No es visible para los usuarios.
+        -<meta>: su función es añadir información sobre la página, utilizada por los buscadores.También se utiliza para agregar que tipo de idiomas estamos trabajando.
+
+        -<link>: nos sirve para vincular hojas de estilos o para vincular el ícono que nos aparece al lado del título de la página.
+
+    -<body></body>: es una etiqueta par, es el cuerpo del sitio web, todo lo que se encuentra en ella es visible en los navegadores.
+        -<header>: va a contener el encabezado de una sección o documento. Dentro de ella podemos encontar el logotipo de una empresa y los logos de las redes sociales.
+        -<nav></nav>: etiqueta para generar la barra de navegación.
+        -<secction></secction>: hace referencia a la sección del sitio.
+        -<aside></aside>: sirve para identificar columnas.
+        -<article></article>: etiqueta para escribir titulos.
+        -<h1<</h1>: etiqueta para escribir titulos que van desde 1 al 6 en tamaño escala.
+        -<p></p>: etiqueta párrafo para escribir texto.
+        -<a></a>: etiqueta que sirve para vincular páginas.
+        <b>: etiquetapara utilizar registros.
+
+    Las etiquetas van acompañadas de atributos, ejemplo identificar el idioma del sitio o los caracteres con los cuales vamos a trabajar:
+    Por ej:
+        <head>
+        <Meta charset "utf-8"> (hace referencia a atributos de carácter latino)
+        <Meta name = "author" content ="Natalia Lucero" > ("author "estas palabras ya
+        vienen por defecto )
+        <Meta name = "description" = "aquí se realiza la descripción del sitio">
+        <meta name= "keywords" content ="tutoriales, html, desarrollo web">
+        <title > "organización Empresarial" (nos mostrará el título de la página)
+        </title>
+        </head>
+
+
+
+
+Creando mi primer archivo html:
+° Desde un block de nota crearemos un archivo index.html

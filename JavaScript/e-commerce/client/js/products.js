@@ -4,27 +4,44 @@ const productos = [
         productName: "Banana",
         price: 480,
         quanty: 1,
-        img: "./media/banana.jpeg"
+        img: "/E-COMMERCE2024/Client/Media/bananas.jpeg",
     },
     {
         id: 2,
-        productName: "Leche",
+        productName: "Azucar",
         price: 950,
         quanty: 1,
-        img: "./media/leche.jpeg"
+        img: "/E-COMMERCE2024/Client/Media/azucar.jpeg",
+
     },
     {
         id: 3,
-        productName: "Pollo",
+        productName: "Leche",
         price: 750,
         quanty: 1,
-        img: "./media/pollo.jpeg"
+        img: "/E-COMMERCE2024/Client/Media/leche.jpeg",
+
     },
     {
         id: 4,
         productName: "Mayonesa",
-        price: 510,
+        price: 450,
         quanty: 1,
-        img: "./media/mayonesa.jpeg"
-    }
+        img: "/E-COMMERCE2024/Client/Media/mayonesa.jpeg",
+    },
+    {
+        id: 5,
+        productName: "Pollo",
+        price: 1500,
+        quanty: 1,
+        img: "/E-COMMERCE2024/Client/Media/pollo.jpeg",
+    },
+
+    {
+        id: 6,
+        productName: "Cafe",
+        price: 3500,
+        quanty: 1,
+        img: "/E-COMMERCE2024/Client/Media/cafe.jpeg",
+    },
 ]

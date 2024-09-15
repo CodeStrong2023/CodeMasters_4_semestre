@@ -1,94 +1,114 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"> //
-        <title>LA LEYENDA DE AANG: AVATAR</title>
-        <link rel="stylesheet" href="/public/CSS/style.css">
-    </head>
-    <body>
-        <section id="seleccionar-personaje">
-            <h1 class="titulo">EL AVATAR!</h1> <!--Esto es estatico, NO cambia, el h1 se utiliza una vez-->
-            <div class="imagen">
-                <img src="/IMAGENES/Principal.jpg" alt="Presentación de los personajes">
-            </div>
-            <!-- <div class="reglas-juego"> 
-             creamos una sección para añadir las reglas del juego, utilizando la etiquetas <ol> y <li> para obtener una lista ordenada
-                <h3>Reglas de Juego</h3>
-                <ol style="font-size: 12px;">
-                    <li>Primer paso: "Selecciona un Personaje", cada uno cuenta con 3 vidas</li>
-                    <li>Segundo paso: "Elige tu ataque", ten en cuenta que:
-                        <p>🤜🏽 vence a 👣, que 🦵🏽 vence a 🤜🏽 y que 👣 vence a 🦵🏽</p>  
-                    </li>
-                    <li>Tercer paso: "DIVIERTETE EN EL COMBATE"</li>
-                    <li>Cuarto paso: Reiniciar el juego para otro divertido combate</li>
-                </ol>
-            <div/=>-->
+<html lang="es">
 
-            <h2 class="subtitulo">Elige tu Personaje</h2>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EL AVATAR! - Juego Retro</title>
+    <link rel="stylesheet" href="public/CSS/style.css">
+</head>
 
-            <div class="avatares">
-                <label class="personajes" for="zuko">Zuko
-                    <img src="/IMAGENES/personajes-juego/Zuko.webp"/>
-                </label> <!--Esta etiqueta es para darle un indicador a los usuarios de que están seleccionando-->
-                <input type="radio" name="personaje" id="zuko"/> <!-- name es para agrupar todos los imputs y poder seleccionar-->
+<body>
+    <div class="game-container">
+        <h1 class="titulo glitch" data-text="EL AVATAR!">EL AVATAR!</h1>
 
-                <label class="personajes" for="katara">Katara
-                    <img src="/IMAGENES/personajes-juego/katara.png"/>
-                </label> <!--El atributo for ayuda a vincular un label con un imput a través del mismo id-->
-                <input type="radio" name="personaje" id="katara"/> <!--Acá van los personajes-->
+        <button id="boton-reglas" class="boton-retro">Mostrar Reglas</button>
 
-                <label class="personajes" for="aang">Aang
-                    <img src="/IMAGENES/personajes-juego/Aang.webp"/>
-                </label>
-                <input type="radio" name="personaje" id="aang"/> <!--Le damos un atributo id para saber cual es el valor de cada uno-->
+        <div id="reglas-juego" class="section rules-section hidden">
+            <h2 class="subtitulo">Reglas de Juego</h2>
+            <ol>
+                <li>Selecciona un personaje.</li>
+                <li>Cada personaje tiene 3 vidas.</li>
+                <li>Elige tu ataque para enfrentarte al enemigo.</li>
+                <li>Si pierdes todas tus vidas, el juego termina.</li>
+                <li>¡Buena suerte, que gane el mejor!</li>
+            </ol>
+        </div>
 
-                <label class="personajes" for="toph">Toph
-                    <img src="/IMAGENES/personajes-juego/toph.png">
-                </label>
-                <input type="radio" name="personaje" id="Toph"/>
-            </div>
+        <main>
+            <section id="seleccionar-personaje" class="section game-section">
+                <h2 class="subtitulo">Elige tu Personaje</h2>
+                <div class="imagen-container">
+                    <img src="IMAGENES/Principal.png" alt="Presentación de los personajes"
+                        class="main-image pixel-image">
+                </div>
+                <div class="avatares">
+                    <div class="personaje">
+                        <input type="radio" name="personaje" id="zuko">
+                        <label for="zuko">
+                            <img src="IMAGENES/personajes-juego/Zuko.webp" alt="Zuko" class="pixel-image">
+                            <span>Zuko</span>
+                        </label>
+                    </div>
+                    <div class="personaje">
+                        <input type="radio" name="personaje" id="katara">
+                        <label for="katara">
+                            <img src="IMAGENES/personajes-juego/katara.png" alt="Katara" class="pixel-image">
+                            <span>Katara</span>
+                        </label>
+                    </div>
+                    <div class="personaje">
+                        <input type="radio" name="personaje" id="aang">
+                        <label for="aang">
+                            <img src="IMAGENES/personajes-juego/Aang.webp" alt="Aang" class="pixel-image">
+                            <span>Aang</span>
+                        </label>
+                    </div>
+                    <div class="personaje">
+                        <input type="radio" name="personaje" id="toph">
+                        <label for="toph">
+                            <img src="IMAGENES/personajes-juego/toph.png" alt="Toph" class="pixel-image">
+                            <span>Toph</span>
+                        </label>
+                    </div>
+                </div>
+                <!-- Contenedor para centrar el botón -->
+                <div class="button-container">
+                    <button id="boton-personaje" class="boton-retro">Seleccionar</button>
+                </div>
+            </section>
 
+            <section id="seleccionar-ataque" class="section game-section hidden">
+                <h2 class="subtitulo">Elige tu Ataque</h2>
+                <div class="avatares-ataques">
+                    <button id="boton-punio" class="ataque boton-retro">
+                        <img src="IMAGENES/golpes/puño.png" alt="Puño" class="pixel-image">
+                        <span>Puño</span>
+                    </button>
+                    <button id="boton-patada" class="ataque boton-retro">
+                        <img src="IMAGENES/golpes/patada.png" alt="Patada" class="pixel-image">
+                        <span>Patada</span>
+                    </button>
+                    <button id="boton-barrida" class="ataque boton-retro">
+                        <img src="IMAGENES/golpes/barrida.png" alt="Barrida" class="pixel-image">
+                        <span>Barrida</span>
+                    </button>
+                </div>
+                <div class="jugada-grid">
+                    <div class="jugada-jugador">
+                        <h3>Jugador</h3>
+                        <p>Personaje: <span id="personaje-jugador"></span></p>
+                        <p>Vidas: <span id="vidas-jugador" class="vidas">3</span></p>
+                        <div id="ataques-del-jugador" class="ataques-list"></div>
+                    </div>
+                    <div class="jugada-enemigo">
+                        <h3>Enemigo</h3>
+                        <p>Personaje: <span id="personaje-enemigo"></span></p>
+                        <p>Vidas: <span id="vidas-enemigo" class="vidas">3</span></p>
+                        <div id="ataques-del-enemigo" class="ataques-list"></div>
+                    </div>
+                </div>
+            </section>
 
-            <button id="boton-personaje">Seleccionar</button> <!-- El botón para seleccionar el personaje-->
-        </section>
+            <section id="mensaje-final" class="section game-section hidden">
+                <h2 id="resultado"></h2>
+                <button id="boton-reiniciar" class="boton-retro">Reiniciar Juego</button>
+            </section>
+        </main>
 
-        <section id="seleccionar-ataque">
-            <h1 class="titulo">EL AVATAR!</h1>
+        <div id="mensajes" class="contenedor-scroll hidden"></div>
+    </div>
+    <script src="public/JS/avatar.js"></script>
+</body>
 
-            <h2 class="subtitulo">Elige tu Ataque</h2> <!--Se puede utilizar varias veces-->
-
-            <div> 
-                <button id= "boton-punio" class="ataque">Puño
-                    <img src="/IMAGENES/golpes/puño.png"/></button>
-
-                <button id="boton-patada" class="ataque">Patada
-                    <img src="/IMAGENES/golpes/patada.png"/> </button>
-                    
-                    
-                <button id="boton-barrida" class="ataque">Barrida
-                    <img src="/IMAGENES/golpes/barrida.png"></button>
-            </div>
-
-            <div id="mensajes">
-                <p id="resultado">Mucha suerte!!!</p>
-
-                <section id="reiniciar">
-                    <button
-                    id="boton-reiniciar">Reiniciar</button>
-                </section>
-            </div>
-                
-           
-    
-            <div>
-                <div id="ataques-del-jugador"></div>
-                <div id="ataques-del-enemigo"></div>
-                <p>Tu personaje<span id="personaje-jugador"></span> tiene <span id="vidas-jugador">3</span> vidas</p> <!--Pero esto debe ser dinamico, necesitamos que cambie-->
-                <p>El personaje del enemigo <span id="personaje-enemigo"></span> tiene <span id="vidas-enemigo">3</span> vidas</p> <!--Con la etiqueta spam vamos a modificar el 3 con JS-->
-            </div>
-        </section>
-        
-        <script src="/public/JS/avatar.js"></script>
-    </body>
 </html>
