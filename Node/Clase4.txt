@@ -1,0 +1,33 @@
+
+NODE CLASE 4
+
+¿Qué es Node?
+    Es un entorno de ejecución multiplataforma basado en JavaScript, es de código abierto y principalmente 
+se usa para servidores web.
+
+CONCEPTOS BÁSICOS
+    Se puede utilizar JavaScript fuera del navegador, pudiendo usarse en cualquier plataforma como una 
+aplicación más. Esto le da a JavaScript la capacidad de hacer las mismas cosas que otros lenguajes 
+de scripting como Python. 
+    Uno de los usos más comunes es el desarrollo de servidores web. Solo se tiene un hilo, pero su 
+diseño hace que las tareas de entrada y salida no bloqueen el hilo y pueda continuar con unas peticiones 
+mientras espera a otras.
+
+VENTAJAS:
+•	Funciona en un solo hilo. Usa un bucle de eventos para procesar las llamadas no bloqueantes de 
+entrada y salida de forma concurrente en un solo hilo. Esto tiene la ventaja de tener menos coste 
+de memoria que si usara varios hilos. 
+•	Para interpretar JavaScript utiliza el motor VB, creado para Chrome, que está muy optimizado. 
+•	Los desarrolladores pueden crear paquetes y subirlos a un repositorio (llamado npm) para distribuirlos. 
+
+LIMITACIONES:
+•	En las tareas intensivas en CPU, Nodejs tiene el módulo de Worker Threads para crear nuevos hilos. 
+Cada hilo tiene su propia instancia de Node y del motor de JavaScript (para evitar problemas 
+de concurrencia), por lo que tiene un impacto en la memoria. 
+•	Calidad irregular en los módulos de npm. Existen paquetes muy estables y también otros que están 
+poco probados y no tienen mucha documentación.
+
+Event Loop
+    Todo lo que pasa en la aplicación va a funcionar de manera asíncrona (el bucle no va a bloquearse, 
+todo lo que suceda va a ejecutarse aparte y el bucle va a seguir ejecutándose). Es muy utilizado 
+para cuando se tienen procesos con muchas entradas y salidas. 
