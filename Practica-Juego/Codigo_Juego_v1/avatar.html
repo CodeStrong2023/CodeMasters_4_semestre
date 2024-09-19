@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <title>LA LEYENDA DE AANG: AVATAR</title>
+        <link rel="stylesheet" href="public/CSS/style.css">
+    </head>
+    <body>
+
+        <button id="boton-reglas" onclick="toggleReglas()">Mostrar reglas</button>
+        <section id="reglas-juego" style="display: none;">
+            <h4>Reglas de Juego</h4>
+            <ol>
+                <li><strong>Primer paso: "Selección de Personaje"</strong>
+                    
+                    <li>El jugador elige uno de los cuatro personajes: Zuko, Katara, Aang, o Toph.</li>
+                    <li>El enemigo es asignado aleatoriamente de entre estos personajes.</li>
+                    
+                </li>
+                <li><strong>Ataques:</strong>
+                    <ul>
+                        <li>El jugador elige entre tres ataques: Puño, Patada, y Barrida.</li>
+        
+                        <li>El enemigo elige su ataque aleatoriamente.</li>
+                    </ul>
+                </li>  
+                <li><strong>Reglas del Combate:</strong>
+                    <ul>
+                        <li><strong>Empate:</strong> Si ambos eligen el mismo ataque.</li>
+            
+                        <li><strong>Victoria del Jugador:</strong>
+                            <ul>
+       
+                                <li>Puño ✊ vence a Barrida 👣.</li>
+       
+                                <li>Patada 🦶 vence a Puño ✊.</li>
+       
+                                <li>Barrida 👣 vence a Patada 🦶.</li>
+       
+                            </ul>
+                        </li>
+                        <li><strong>Derrota del Jugador:</strong> Cualquier otra combinación.</li>
+                    </ul>
+                </li>
+                <li><strong>Vidas:</strong>
+                    <ul>
+                        <li>Ambos comienzan con 3 vidas.</li>
+       
+                        <li>Perder un combate disminuye una vida.</li>
+       
+                    </ul>
+                </li>
+                <li><strong>Fin del Juego:</strong>
+                    <ul>
+       
+                        <li><strong>Victoria del Jugador:</strong> Enemigo pierde todas sus vidas.</li>
+       
+                        <li><strong>Derrota del Jugador:</strong> Jugador pierde todas sus vidas.</li>
+       
+                        <li>Se deshabilitan los botones de ataque y se muestra un botón para reiniciar el juego.</li>
+                    </ul>
+                </li>
+                <li><strong>Reinicio del Juego:</strong>
+                    <ul>
+       
+                        <li>El jugador puede reiniciar el juego, recargando la página.</li>
+       
+                    </ul>
+                </li>
+            </ol>
+        </section>
+
+        <section id="seleccionar-personaje" style="display: none;">
+            <h1 class="titulo">EL AVATAR!</h1> <!--Esto es estatico, NO cambia, el h1 se utiliza una vez-->
+            <div class="imagen">
+                <img src="/Practica-Juego/Codigo_Juego/IMAGENES/Principal.jpg" alt="Presentación de los personajes">
+            </div>
+
+            <h2 class="subtitulo">Elige tu Personaje</h2>
+
+            <div class="avatares">
+                <input type="radio" name="personaje" id="zuko"/> <!-- name es para agrupar todos los imputs y poder seleccionar-->
+                <label class="personajes" for="zuko">
+                    <p>Zuko</p> 
+                    <img src="/Practica-Juego/Codigo_Juego/IMAGENES/personajes-juego/Zuko.webp"/>
+                </label> <!--Esta etiqueta es para darle un indicador a los usuarios de que están seleccionando-->
+
+                <input type="radio" name="personaje" id="katara"/> 
+                <label class="personajes" for="katara">
+                    <p>Katara</p>
+                    <img src="/Practica-Juego/Codigo_Juego/IMAGENES/personajes-juego/katara.png"/>
+                </label> <!--El atributo for ayuda a vincular un label con un imput a través del mismo id-->
+                
+                <input type="radio" name="personaje" id="aang"/> <!--Le damos un atributo id para saber cual es el valor de cada uno-->
+                <label class="personajes" for="aang">
+                    <p>Aang</p>
+                    <img src="/Practica-Juego/Codigo_Juego/IMAGENES/personajes-juego/Aang.webp"/>
+                </label>
+
+                <input type="radio" name="personaje" id="toph"/>
+                <label class="personajes" for="toph">
+                    <p>Toph</p>
+                    <img src="/Practica-Juego/Codigo_Juego/IMAGENES/personajes-juego/toph.png">
+                </label>
+                
+            </div>
+
+
+            <button id="boton-personaje">Seleccionar</button> <!-- El botón para seleccionar el personaje-->
+        </section>
+
+        <section id="seleccionar-ataque" style="display: block;">
+            <h1 class="titulo">EL AVATAR!</h1>
+
+            <h2 class="subtitulo">Elige tu Ataque</h2> <!--Se puede utilizar varias veces-->
+
+            <div class="avatares-ataques"> 
+                <button id= "boton-punio" class="ataque">Puño
+                    <img src="/Practica-Juego/Codigo_Juego/IMAGENES/golpes/puño.png"/></button>
+
+                <button id="boton-patada" class="ataque">Patada
+                    <img src="/Practica-Juego/Codigo_Juego/IMAGENES/golpes/patada.png"/> </button>
+                    
+                    
+                <button id="boton-barrida" class="ataque">Barrida
+                    <img src="/Practica-Juego/Codigo_Juego/IMAGENES/golpes/barrida.png"></button>
+            </div>
+    
+            <div class="jugada">
+                <div class="jugada-grid">
+                    <div class="jugada-jugador">
+                    <p id="vidas-jugador">3</p>
+                    <p id="personaje-jugador"></p> 
+                    <div id="ataques-del-jugador"></div></div>
+                    
+                    <div class="jugada-enemigo">
+                        <p id="vidas-enemigo">3</p>
+                        <p id="personaje-enemigo"></p>
+                        <div id="ataques-del-enemigo"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de reinicio con mensajes de combate -->
+        <section id="reiniciar">
+            <div id="mensajes" class="contenedor-scroll"></div>
+        </section>
+
+        <div id="mensaje-final">
+            <button id="boton-reiniciar" class="hidden" onclick="reiniciarJuego()">Reiniciar</button>
+        </div>
+        
+        <script src="public/JS/avatar.js"></script>
+    </body>
+</html>
