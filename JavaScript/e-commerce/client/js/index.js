@@ -1,7 +1,7 @@
 const shopContent = document.getElementById("shopContent");
-const cart = []; //Este es nuestro carrito, un array vacio
+const cart = [];//carrito vacio
 
-productos.forEach( (product) => {
+productos.forEach((product) =>{
     const content = document.createElement("div");
     content.innerHTML = `
     <img src="${product.img}">
@@ -14,15 +14,24 @@ productos.forEach( (product) => {
     buyButton.innerText = "Comprar";
 
     content.append(buyButton);
+    
+    buyButton.addEventListener("click", ()=>{
+        const repeat = cart.some((repeatProduct) => repeatProduct.id === product.id);
 
-    buyButton.addEventListener("click", () => {
-        cart.push({
-            id: product.id,
-            productName: product.productName,
-            price: product.price,
-            quanty: product.quanty,
-            img: product.img,
-        })
-        console.log(cart);
-    })
-})
+        if(repeat){
+            cart.map((prod) => {
+                if(prod.id === product.id){
+                    prod.quanty++;
+                }
+            });
+        }else {
+            cart.push({
+                id: product.id,
+                productName: product.productName,
+                price: product.price,
+                quanty: product.quanty,
+                img: product.img,
+            });
+        }
+    })   
+});

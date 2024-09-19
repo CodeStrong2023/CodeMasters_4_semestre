@@ -4,7 +4,7 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
         <title>LA LEYENDA DE AANG: AVATAR</title>
-        <link rel="stylesheet" href="/public/CSS/style.css">
+        <link rel="stylesheet" href="public/CSS/style.css">
     </head>
     <body>
 
@@ -74,7 +74,7 @@
         <section id="seleccionar-personaje" style="display: none;">
             <h1 class="titulo">EL AVATAR!</h1> <!--Esto es estatico, NO cambia, el h1 se utiliza una vez-->
             <div class="imagen">
-                <img src="/IMAGENES/Principal.jpg" alt="Presentación de los personajes">
+                <img src="/Practica-Juego/Codigo_Juego/IMAGENES/Principal.jpg" alt="Presentación de los personajes">
             </div>
 
             <h2 class="subtitulo">Elige tu Personaje</h2>
@@ -83,25 +83,25 @@
                 <input type="radio" name="personaje" id="zuko"/> <!-- name es para agrupar todos los imputs y poder seleccionar-->
                 <label class="personajes" for="zuko">
                     <p>Zuko</p> 
-                    <img src="/IMAGENES/personajes-juego/Zuko.webp"/>
+                    <img src="/Practica-Juego/Codigo_Juego/IMAGENES/personajes-juego/Zuko.webp"/>
                 </label> <!--Esta etiqueta es para darle un indicador a los usuarios de que están seleccionando-->
 
                 <input type="radio" name="personaje" id="katara"/> 
                 <label class="personajes" for="katara">
                     <p>Katara</p>
-                    <img src="/IMAGENES/personajes-juego/katara.png"/>
+                    <img src="/Practica-Juego/Codigo_Juego/IMAGENES/personajes-juego/katara.png"/>
                 </label> <!--El atributo for ayuda a vincular un label con un imput a través del mismo id-->
                 
                 <input type="radio" name="personaje" id="aang"/> <!--Le damos un atributo id para saber cual es el valor de cada uno-->
                 <label class="personajes" for="aang">
                     <p>Aang</p>
-                    <img src="/IMAGENES/personajes-juego/Aang.webp"/>
+                    <img src="/Practica-Juego/Codigo_Juego/IMAGENES/personajes-juego/Aang.webp"/>
                 </label>
 
                 <input type="radio" name="personaje" id="toph"/>
                 <label class="personajes" for="toph">
                     <p>Toph</p>
-                    <img src="/IMAGENES/personajes-juego/toph.png">
+                    <img src="/Practica-Juego/Codigo_Juego/IMAGENES/personajes-juego/toph.png">
                 </label>
                 
             </div>
@@ -117,14 +117,14 @@
 
             <div class="avatares-ataques"> 
                 <button id= "boton-punio" class="ataque">Puño
-                    <img src="/IMAGENES/golpes/puño.png"/></button>
+                    <img src="/Practica-Juego/Codigo_Juego/IMAGENES/golpes/puño.png"/></button>
 
                 <button id="boton-patada" class="ataque">Patada
-                    <img src="/IMAGENES/golpes/patada.png"/> </button>
+                    <img src="/Practica-Juego/Codigo_Juego/IMAGENES/golpes/patada.png"/> </button>
                     
                     
                 <button id="boton-barrida" class="ataque">Barrida
-                    <img src="/IMAGENES/golpes/barrida.png"></button>
+                    <img src="/Practica-Juego/Codigo_Juego/IMAGENES/golpes/barrida.png"></button>
             </div>
     
             <div class="jugada">
@@ -152,6 +152,6 @@
             <button id="boton-reiniciar" class="hidden" onclick="reiniciarJuego()">Reiniciar</button>
         </div>
         
-        <script src="/public/JS/avatar.js"></script>
+        <script src="public/JS/avatar.js"></script>
     </body>
 </html>

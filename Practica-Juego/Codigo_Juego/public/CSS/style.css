@@ -1,175 +1,322 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
-@import url('https://fonts.googleapis.com/css2?family=Jersey+10&family=Permanent+Marker&display=swap');
+:root {
+  --main-bg-color: #0a0a0a;
+  --text-color: #33ff00;
+  --border-color: #33ff00;
+  --highlight-color: #ff00ff;
+  --button-bg: #1a1a1a;
+  --button-hover-bg: #3a3a3a;
+  --selected-color: #ff6600;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
 body {
-    
-    font-family: "Permanent Marker", cursive;
-    background-color: hsl(207, 76%, 68%);
-    background-image: linear-gradient(hsl(207, 76%, 18%),white);
-    margin: 0; 
-    padding: 0;
-    
-} 
-#seleccionar-personaje {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 100vh;
-    align-items: center;
-    text-align: center;
+  font-family: 'Press Start 2P', cursive;
+  background-color: var(--main-bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  overflow-x: hidden;
 }
+
+.game-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
 .titulo {
-    
-    color:cornsilk;
-    font-size: 55px;
-    margin-bottom: 20px;;
-    
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  position: relative;
 }
-body img {
-    border-radius: 20px;
-    width: 100%;
-    max-width: 300px;
-    
+
+.glitch {
+  position: relative;
 }
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.glitch::before {
+  left: 2px;
+  text-shadow: -2px 0 #ff00de;
+  clip: rect(44px, 450px, 56px, 0);
+  animation: glitch-anim 5s infinite linear alternate-reverse;
+}
+
+.glitch::after {
+  left: -2px;
+  text-shadow: -2px 0 #00fff9, 2px 2px #ff00de;
+  animation: glitch-anim2 1s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim {
+  0% {
+    clip: rect(31px, 9999px, 94px, 0);
+    transform: skew(0.85deg);
+  }
+  5% {
+    clip: rect(70px, 9999px, 71px, 0);
+    transform: skew(0.85deg);
+  }
+  /* ... (more keyframes) ... */
+  100% {
+    clip: rect(67px, 9999px, 62px, 0);
+    transform: skew(0.92deg);
+  }
+}
+
+@keyframes glitch-anim2 {
+  0% {
+    clip: rect(65px, 9999px, 99px, 0);
+    transform: skew(0.65deg);
+  }
+  5% {
+    clip: rect(79px, 9999px, 67px, 0);
+    transform: skew(0.2deg);
+  }
+  /* ... (more keyframes) ... */
+  100% {
+    clip: rect(54px, 9999px, 70px, 0);
+    transform: skew(0.5deg);
+  }
+}
+
 .subtitulo {
-    color:cornsilk;
-    font-size: 32px;
-    margin: 10px 0;
+  font-size: 1.5rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  text-shadow: 3px 3px 0px rgba(0, 255, 0, 0.5);
 }
 
-.personajes {
-    width: 160px;
-    height: 100px;
-    background: thistle;
-    padding: 10px;
-    box-sizing: border-box;
-    margin: 10px;
-    border-radius: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.personajes img {
-    width: 70px;
-    border-radius: 10px;
-    height: auto;
+.section {
+  margin-bottom: 2rem;
+  border: 2px solid var(--border-color);
+  padding: 1.5rem;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.7);
+  box-shadow: 0 0 10px var(--highlight-color);
 }
 
-.avatares {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+.boton-retro {
+  font-family: 'Press Start 2P', cursive;
+  background-color: var(--button-bg);
+  color: var(--text-color);
+  border: 2px solid var(--border-color);
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-input {
-    display: none;
-
+.boton-retro:hover {
+  background-color: var(--button-hover-bg);
+  transform: translateY(-3px);
+  box-shadow: 0 0 15px var(--highlight-color);
 }
 
-#boton-personaje {
-    width: 200px;
-    height: 40px;
-    border-radius: 20px;
-    background: transparent;
-    border: 4px solid white;
-    color: white;
-    font-size: 20px;
-    margin: 20px;
-    cursor: pointer;
+.hidden {
+  display: none !important;
 }
 
-#seleccionar-ataque {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    box-sizing: border-box;
-    height: auto;
-    
+
+.avatares, .avatares-ataques {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
 }
+
+.personaje {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.personaje:hover {
+  transform: scale(1.05);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.personaje input[type="radio"] {
+  display: none;
+}
+
+.personaje input[type="radio"]:checked + label {
+  background-color: var(--selected-color);
+  box-shadow: 0 0 15px var(--selected-color);
+}
+
+.personaje img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border: 2px solid var(--border-color);
+  border-radius: 10px;
+  margin-bottom: 0.5rem;
+}
+
+.personaje span {
+  font-size: 0.8rem;
+}
+
 .ataque {
-    width: 170px;
-    height: 130px;
-    background: transparent;
-    font-family: "Permanent Marker", cursive;
-    padding: 10px;
-    box-sizing: border-box;
-    margin: 10px;
-    border-radius: 20px;
-    border-color: transparent;
-    cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .ataque img {
-    width: 150px;
-    height: auto;
-    margin: 5px;
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  margin-bottom: 0.5rem;
 }
 
-#mensajes {
-    width: 100%;
-    max-width: 600px;
-    background: transparent;
-    display: flex;
-    align-items: center;
-    font-size: 16px;
-    margin-top: 20px;
-    flex-direction: column;
-    padding: 20px;
-    box-sizing: border-box;
+.jugada-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
 }
 
-#boton-reiniciar {
-    border: none;
-    color: black;
-    font-family: "Permanent Marker", cursive;
-    font-size: 20px;
-    background: transparent;
-    cursor: pointer;
-    margin-top: 20px;
+.jugada-jugador, .jugada-enemigo {
+  text-align: center;
+  padding: 1rem;
+  border: 2px solid var(--border-color);
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
-/* Estilos para móviles */
-@media only screen and (max-width: 600px) {
-    body {
-        background-image: linear-gradient(hsl(207, 76%, 28%), white);
-        font-size: 14px;
-    }
-
-    .titulo {
-        font-size: 32px;
-    }
-
-    .subtitulo {
-        font-size: 20px;
-    }
-
-    .personajes {
-        width: 120px;
-        height: 80px;
-        padding: 5px;
-        margin: 5px;
-    }
-
-    .personajes img {
-        width: 50px;
-    }
-
-    #boton-personaje {
-        width: 150px;
-        height: 35px;
-        font-size: 16px;
-    }
-
-    .ataque {
-        width: 140px;
-        height: 100px;
-        margin: 5px;
-        padding: 5px;
-    }
-
-    .ataque img {
-        width: 120px;
-        height: auto;
-    }
+.vidas {
+  font-size: 2rem;
+  color: #ff0000;
+  text-shadow: 2px 2px 0px rgba(255, 0, 0, 0.5);
 }
+
+.contenedor-scroll {
+  max-height: 200px;
+  overflow-y: auto;
+  padding: 1rem;
+  border: 2px solid var(--border-color);
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+  margin-top: 1.5rem;
+}
+
+#reglas-juego {
+  background-color: rgba(0, 0, 0, 0.8);
+  border: 2px solid var(--border-color);
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 20px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#reglas-juego h2 {
+  color: var(--highlight-color);
+  margin-bottom: 15px;
+}
+
+#reglas-juego ol {
+  padding-left: 20px;
+}
+
+#reglas-juego li {
+  margin-bottom: 10px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .titulo {
+    font-size: 2rem;
+  }
+
+  .subtitulo {
+    font-size: 1.2rem;
+  }
+
+  .personaje img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .ataque img {
+    width: 60px;
+    height: 60px;
+  }
+
+  .jugada-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .titulo {
+    font-size: 1.5rem;
+  }
+
+  .subtitulo {
+    font-size: 1rem;
+  }
+
+  .personaje img {
+    width: 80px;
+    height: 80px;
+  }
+
+  .ataque img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .boton-retro {
+    font-size: 0.8rem;
+    padding: 8px 16px;
+  }
+}
+/* Asegúrate de que el contenedor tenga un ancho adecuado y esté centrado */
+.imagen-container {
+  display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center;     /* Centra verticalmente si es necesario */
+  width: 100%;              /* Ajusta el ancho del contenedor si es necesario */
+}
+
+/* Ajusta la imagen para que no se desborde del contenedor */
+.main-image {
+  max-width: 100%; /* Evita que la imagen se desborde del contenedor */
+  height: auto;    /* Mantiene la proporción de la imagen */
+}
+/* Estilos para el contenedor del botón */
+.button-container {
+  display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  margin-top: 1.5rem;      /* Espaciado superior si es necesario */
+}
+
+/* Si quieres agregar espaciado adicional alrededor del botón */
+.boton-retro {
+  margin: 1rem; /* Ajusta según sea necesario */
+}
+
