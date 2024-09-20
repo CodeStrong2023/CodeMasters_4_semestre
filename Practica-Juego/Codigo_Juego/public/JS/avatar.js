@@ -1,65 +1,80 @@
 // Array de personajes disponibles
-const personajes = ['Zuko', 'Katara', 'Aang', 'Toph'];
+let personajes = [
+    { nombre: 'Zuko', img: 'IMAGENES/personajes-juego/Zuko.webp' },
+    { nombre: 'Katara', img: 'IMAGENES/personajes-juego/katara.png' },
+    { nombre: 'Aang', img: 'IMAGENES/personajes-juego/Aang.webp' },
+    { nombre: 'Toph', img: 'IMAGENES/personajes-juego/toph.png' }
+];
+
+// Función para agregar un personaje
+function agregarPersonaje(nombrePersonaje, imagenPersonaje) {
+    personajes.push({ nombre: nombrePersonaje, img: imagenPersonaje });
+    renderizarPersonajes();
+}
+
+// Función para renderizar personajes en el DOM
+function renderizarPersonajes() {
+    const avataresDiv = document.querySelector('.avatares');
+    avataresDiv.innerHTML = '';  // Limpiar contenido anterior
+
+    personajes.forEach(personaje => {
+        const personajeDiv = document.createElement('div');
+        personajeDiv.classList.add('personaje');
+        personajeDiv.innerHTML = `
+            <input type="radio" name="personaje" id="${personaje.nombre.toLowerCase()}" required>
+            <label for="${personaje.nombre.toLowerCase()}">
+                <img src="${personaje.img}" alt="${personaje.nombre}" class="pixel-image">
+                <span>${personaje.nombre}</span>
+            </label>
+        `;
+        avataresDiv.appendChild(personajeDiv);
+    });
+}
+
+// Agregar un nuevo personaje
+agregarPersonaje('Iroh', 'IMAGENES/personajes-juego/iroh.png');
+
 // Array de ataques disponibles
 const ataques = ['Puño', 'Patada', 'Barrida'];
 
 // Variables para almacenar el ataque del jugador y del enemigo
 let ataqueJugador;
 let ataqueEnemigo;
-// Variables para almacenar las vidas del jugador y del enemigo
 let vidasJugador = 3;
 let vidasEnemigo = 3;
 
 function iniciarJuego() {
-    // Ocultar secciones iniciales
     ocultarSeccion('seleccionar-ataque');
     ocultarSeccion('mensaje-final');
     ocultarSeccion('mensajes');
 
+    renderizarPersonajes();
+
     // Añadir eventos a los botones
     document.getElementById('boton-personaje').addEventListener('click', seleccionarPersonajeJugador);
-    document.getElementById("boton-patada").addEventListener('click', () => realizarAtaque('Patada'));
-    document.getElementById("boton-punio").addEventListener('click', () => realizarAtaque('Puño'));
-    document.getElementById("boton-barrida").addEventListener('click', () => realizarAtaque('Barrida'));
-    document.getElementById("boton-reiniciar").addEventListener('click', reiniciarJuego);
-    document.getElementById("boton-reglas").addEventListener('click', toggleReglas);
+    document.getElementById('boton-punio').addEventListener('click', () => realizarAtaque('Puño'));
+    document.getElementById('boton-patada').addEventListener('click', () => realizarAtaque('Patada'));
+    document.getElementById('boton-barrida').addEventListener('click', () => realizarAtaque('Barrida'));
+    document.getElementById('boton-reiniciar').addEventListener('click', reiniciarJuego);
 
     // Efecto de parpadeo para el título
     setInterval(() => {
         const titulo = document.querySelector('.titulo');
         titulo.style.opacity = titulo.style.opacity === '0' ? '1' : '0';
     }, 500);
-}
 
-function toggleReglas() {
-    const reglas = document.getElementById('reglas-juego');
-    const botonReglas = document.getElementById('boton-reglas');
-    
-    if (reglas.classList.contains('hidden')) {
-        reglas.classList.remove('hidden');
-        botonReglas.textContent = 'Ocultar Reglas';
-    } else {
-        reglas.classList.add('hidden');
-        botonReglas.textContent = 'Mostrar Reglas';
-    }
-}
-
-document.getElementById('boton-reglas').addEventListener('click', toggleReglas);
-
-
-function ocultarSeccion(id) {
-    document.getElementById(id).classList.add('hidden');
-}
-
-function mostrarSeccion(id) {
-    document.getElementById(id).classList.remove('hidden');
+    // Mostrar reglas del juego al hacer clic
+    document.getElementById('boton-reglas').addEventListener('click', () => {
+        const reglas = document.getElementById('reglas-juego');
+        reglas.classList.toggle('hidden');
+    });
 }
 
 function seleccionarPersonajeJugador() {
-    const personajeSeleccionado = personajes.find(p => document.getElementById(p.toLowerCase()).checked);
-    
+    const personajeSeleccionado = personajes.find(p => document.getElementById(p.nombre.toLowerCase()).checked);
+
     if (personajeSeleccionado) {
-        document.getElementById('personaje-jugador').textContent = personajeSeleccionado;
+        document.getElementById('personaje-jugador').textContent = personajeSeleccionado.nombre;
         ocultarSeccion('seleccionar-personaje');
         mostrarSeccion('seleccionar-ataque');
         seleccionarPersonajeEnemigo();
@@ -70,7 +85,7 @@ function seleccionarPersonajeJugador() {
 
 function seleccionarPersonajeEnemigo() {
     const personajeAleatorio = personajes[Math.floor(Math.random() * personajes.length)];
-    document.getElementById('personaje-enemigo').textContent = personajeAleatorio;
+    document.getElementById('personaje-enemigo').textContent = personajeAleatorio.nombre;
 }
 
 function realizarAtaque(ataque) {
@@ -118,24 +133,21 @@ function revisarVidas() {
 function crearMensaje(resultado) {
     const nuevoAtaqueDelJugador = document.createElement('p');
     const nuevoAtaqueDelEnemigo = document.createElement('p');
-    
+
     nuevoAtaqueDelJugador.innerHTML = ataqueJugador;
     nuevoAtaqueDelEnemigo.innerHTML = ataqueEnemigo;
-    
+
     document.getElementById('ataques-del-jugador').appendChild(nuevoAtaqueDelJugador);
     document.getElementById('ataques-del-enemigo').appendChild(nuevoAtaqueDelEnemigo);
-    
+
     const mensajeResultado = document.createElement('p');
     mensajeResultado.innerHTML = `Tu ${ataqueJugador} VS ${ataqueEnemigo} del enemigo - ${resultado}`;
     document.getElementById('mensajes').appendChild(mensajeResultado);
-    
-    mostrarSeccion('mensajes');
 }
 
-function crearMensajeFinal(resultado) {
-    document.getElementById('resultado').innerHTML = resultado;
-    
+function crearMensajeFinal(mensaje) {
     mostrarSeccion('mensaje-final');
+    document.getElementById('resultado').textContent = mensaje;
     ocultarSeccion('seleccionar-ataque');
 }
 
@@ -143,15 +155,21 @@ function reiniciarJuego() {
     location.reload();
 }
 
-function mostrarMensaje(mensaje, tipo) {
-    const mensajeElement = document.createElement('div');
-    mensajeElement.textContent = mensaje;
-    mensajeElement.classList.add('mensaje', tipo);
-    document.body.appendChild(mensajeElement);
-    
-    setTimeout(() => {
-        mensajeElement.remove();
-    }, 3000);
+function ocultarSeccion(id) {
+    document.getElementById(id).classList.add('hidden');
 }
 
-window.addEventListener('load', iniciarJuego);
+function mostrarSeccion(id) {
+    document.getElementById(id).classList.remove('hidden');
+}
+
+function mostrarMensaje(mensaje, tipo) {
+    const divMensajes = document.getElementById('mensajes');
+    const mensajeDiv = document.createElement('div');
+    mensajeDiv.classList.add(tipo);
+    mensajeDiv.textContent = mensaje;
+    divMensajes.appendChild(mensajeDiv);
+    mostrarSeccion('mensajes');
+}
+
+iniciarJuego();
