@@ -72,15 +72,45 @@ export const useCart = () =>{
 
     // Metodo de pago
 
-    function processPayment(cartTotal) {
+    function processPayment() {
         if (cartTotal > 0) {
-            alert(`Pago realizado con éxito por un total de $${cartTotal}. ¡Gracias por tu compra!`);
-            // Aquí puedes vaciar el carrito después de la compra
-            clearCart();
+            const itemsToSend = cart.map(item => ({
+                id: item.id,
+                quantity: item.quantity
+            }));
+    
+            // Aquí deberías hacer la solicitud a tu API para crear la preferencia
+            fetch('http://localhost:3001/api/create-preference', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    items: itemsToSend,
+                    total: cartTotal
+                }),
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Error en la creación de la preferencia');
+                }
+                return response.json();
+            })
+            .then(data => {
+                // Maneja la respuesta de éxito aquí
+                console.log('Preferencia creada:', data);
+                alert(`Pago realizado con éxito. ID de preferencia: ${data.preferenceId}`);
+                clearCart(); // Vacia el carrito
+            })
+            .catch(error => {
+                console.error('Error en el proceso de pago:', error);
+                alert('Ocurrió un error al procesar el pago.');
+            });
         } else {
             alert("El carrito está vacío. Agrega productos antes de pagar.");
         }
     }
+    
     
 
     return{
