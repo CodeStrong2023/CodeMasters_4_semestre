@@ -1,14 +1,43 @@
-import Guitar from "./components/Guitar"
-import Header from "./components/Header"
-import { useCart } from "./hooks/useCart"
+//E-commerce\src\App.jsx
+import React, { useState, useEffect } from "react";
+import Header from "./components/Header";
+import Guitar from "./components/Guitar";
+import { db } from "./data/db";
+import { useCart } from "./hooks/useCart";
+import { initMercadoPago, createPreference } from "./mercadopago/mercadopago";
 
-export default function App() {
-  
-    const { data, cart, addToCart, removeFromCart, increaseQuantity, decreaseQuantity, clearCart, isEmpaty, cartTotal } = useCart()
-    
+function App() {
+  const {
+    cart,
+    addToCart,
+    removeFromCart,
+    increaseQuantity,
+    decreaseQuantity,
+    clearCart,
+    isEmpaty,
+    cartTotal,
+  } = useCart();
+
+  useEffect(() => {
+    initMercadoPago();
+  }, []);
+
+  const handlePayment = async () => {
+    try {
+      console.log("Iniciando proceso de pago...");
+      const preferenceId = await createPreference(cart);
+      console.log("Preference ID recibido:", preferenceId);
+      
+      // Iniciar el checkout de Mercado Pago
+      window.location.href = `https://www.mercadopago.com.ar/checkout/v1/redirect?pref_id=${preferenceId}`;
+    } catch (error) {
+      console.error("Error al iniciar el pago:", error);
+    }
+  };
+
   return (
     <>
-    <Header
+      <Header
         cart={cart}
         removeFromCart={removeFromCart}
         increaseQuantity={increaseQuantity}
@@ -16,28 +45,28 @@ export default function App() {
         clearCart={clearCart}
         isEmpaty={isEmpaty}
         cartTotal={cartTotal}
-    />
-    <main className="container-xl mt-5">
-        <h2 className="text-center">Nuestra Colección</h2>
+        handlePayment={handlePayment}
+      />
+
+      <main className="container-xl mt-5">
+        <h1 className="text-center">Nuestra Colección</h1>
 
         <div className="row mt-5">
-            {data.map((guitar) => (
-                <Guitar 
-                    key={guitar.id} 
-                    guitar={guitar} 
-                    addToCart={addToCart}
-                
-                />
-            ))}
+          {db.map((guitar) => (
+            <Guitar key={guitar.id} guitar={guitar} addToCart={addToCart} />
+          ))}
         </div>
-    </main>
+      </main>
 
-
-    <footer className="bg-dark mt-5 py-5">
+      <footer className="bg-dark mt-5 py-5">
         <div className="container-xl">
-            <p className="text-white text-center fs-4 mt-4 m-md-0">GuitarLA - Todos los derechos Reservados</p>
+          <p className="text-white text-center fs-4 mt-4 m-md-0">
+            GuitarLA - Todos los derechos Reservados
+          </p>
         </div>
-    </footer>
+      </footer>
     </>
-  )
+  );
 }
+
+export default App;
