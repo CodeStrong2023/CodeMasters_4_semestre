@@ -1,10 +1,12 @@
 import express from "express";
 import cors from "cors";
-import { MercadoPagoConfig, Preference } from "mercadopago";
+import mercadopago from "mercadopago";
+
 
 // agregar credenciales
+
 const client = new MercadoPagoConfig({
-  accessToken: "APP_USR-1160660466312499-092315-3c58f5fb00de223a71ac4953764a2f38-1995390814",
+  access_token:"TEST-2760494553901973-091619-35ee44502f5cc095aaaf6dc7fcb96bf6-657890611"
 });
 
 const app = express();
@@ -13,13 +15,14 @@ const port = 3000;
 app.use(cors());
 app.use(express.json());
 
+
 app.get("/", (req, res) => {
   res.send("soy el server");
 });
 
 app.post("/create_preference", async (req, res) => {
     try {
-      const body = {
+      const preference = {
         items: [
           {
             title: req.body.title,
@@ -36,10 +39,9 @@ app.post("/create_preference", async (req, res) => {
         auto_return: "approved",
       };
   
-      const preference = new Preference(client);
-      const result = await preference.create({ body });
+      const result = await mercadopago.preferences.create({ preference });
       res.json({
-        id: result.id,
+        id: result.body.id,
       });
     } catch (error) {
       console.error("Error creating preference:", error);
@@ -48,5 +50,7 @@ app.post("/create_preference", async (req, res) => {
   });
 
 app.listen(port, () => {
-  console.log("The server is now running on Port 3000");
+  console.log(`El servidor esta corriendo en el puerto ${3000}`)
 });
+
+//5031 7557 3453 0604
