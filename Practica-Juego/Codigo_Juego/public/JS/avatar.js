@@ -8,7 +8,7 @@ let personajes = [
 
 // Función para agregar un personaje
 function agregarPersonaje(nombrePersonaje, imagenPersonaje) {
-    personajes.push({ nombre: nombrePersonaje, img: imagenPersonaje });
+    personajes.push({ nombre: nombrePersonaje, img: imagenPersonaje });  //Código agregado por Juli
     renderizarPersonajes();
 }
 
