@@ -1,8 +1,14 @@
 import app from "./app.js";
+// import {pool} from "./db.js";
 
-const PORT = 3000;
+// pool.query("SELECT NOW()", (err, res) => {
+//     console.log(err, res);
+//     app.listen(3000)
+//     console.log("server on port", 3000);
+//     pool.end();
+// })
 
-app.listen(PORT, () => {
-    console.log("El server en port", 3000);
-});
+app.listen(3000);
+console.log("server on port", 3000);
 
+// para ejecutar la app se usa el comando = npm run dev
