@@ -4,7 +4,7 @@ const productos = [
         productName: "Blusa",
         price: 25,
         quanty: 1,
-        img: "media/blusa.png",
+        img: "media/ryzen 7 5700g",
     },
     {
         id: 2,
