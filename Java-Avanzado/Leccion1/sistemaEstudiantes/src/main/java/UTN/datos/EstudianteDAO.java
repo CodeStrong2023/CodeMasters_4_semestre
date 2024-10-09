@@ -11,7 +11,7 @@ import java.util.List;
 
 public class EstudianteDAO {
     //Metod listar
-    public static List<Estudiante> listarEstudiantes(){
+    public List<Estudiante> listarEstudiantes(){
         List<Estudiante> estudiantes = new ArrayList<>();
         // Creamos algunos objetos que son necesarios para comunicarnos con la base de datos
         PreparedStatement ps; //Envia la sentencia a la base de datos
@@ -152,7 +152,7 @@ public class EstudianteDAO {
 
 
     public static void main(String[] arg){
-        var estudiantesDao = new EstudianteDAO();
+        var estudianteDao = new EstudianteDAO();
         //Metodo estudiante
         //var estudianteModificado = new Estudiante(1, "Juan Carlos", "Juarez", "2604784512", "juan@mail.com");
         //var modificado = estudiantesDao.modificarEstudiante(estudianteModificado);
@@ -170,7 +170,7 @@ public class EstudianteDAO {
 
         //Eliminar estudiante con id 3
         var estudianteEliminar = new Estudiante(4);
-        var eliminado = estudiantesDao.eliminarEstudiante(estudianteEliminar);
+        var eliminado = estudianteDao.eliminarEstudiante(estudianteEliminar);
         if(eliminado)
             System.out.println("Estudiante eliminado: "+estudianteEliminar);
         else
@@ -178,7 +178,7 @@ public class EstudianteDAO {
 
         // Listar los estudiantes
         System.out.println("Listado de estudiantes: ");
-        List<Estudiante> estudiantes = estudiantesDao.listarEstudiantes();
+        List<Estudiante> estudiantes = estudianteDao.listarEstudiantes();
         estudiantes.forEach(System.out::println);// Funcion lambda para imprimir
 
 

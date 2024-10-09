@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="bfbbab7f-c273-4c41-95da-77f4357d95e6" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/tienda_libros/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tienda_libros/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tienda_libros/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tienda_libros/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tienda_libros/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tienda_libros/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tienda_libros/.idea/tienda_libros.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tienda_libros/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tienda_libros/tienda_libros/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tienda_libros/tienda_libros/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tienda_libros/tienda_libros/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tienda_libros/tienda_libros/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tienda_libros/tienda_libros/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tienda_libros/tienda_libros/src/main/java/utn/tienda_libros/TiendaLibrosApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tienda_libros/tienda_libros/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tienda_libros/tienda_libros/src/main/resources/logback-spring.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tienda_libros/tienda_libros/src/test/java/utn/tienda_libros/TiendaLibrosApplicationTests.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 3
+}</component>
+  <component name="ProjectId" id="2n85gmvgAzXXIdGnDFPmY1DyQXN" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;colaboradores&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/CodeMasters_4_semestre/Java-Avanzado/Leccion03&quot;
+  }
+}</component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="bfbbab7f-c273-4c41-95da-77f4357d95e6" name="Changes" comment="" />
+      <created>1728341978139</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1728341978139</updated>
+    </task>
+    <servers />
+  </component>
+</project>

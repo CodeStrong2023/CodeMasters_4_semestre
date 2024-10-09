@@ -1,10 +1,9 @@
 package UTN.presentacion;
 
-import UTN.conexion.Conexion;
-import UTN.dominio.Estudiante;
-import UTN.datos.EstudianteDAO;
-
 import java.util.Scanner;
+
+import UTN.datos.EstudianteDAO;
+import UTN.dominio.Estudiante;
 
 public class SistemaEstudiantesApp {
     public static void main(String[] args) {
@@ -44,14 +43,14 @@ public class SistemaEstudiantesApp {
                 estudiantes.forEach(System.out::println);
             }
             case 2 -> {
-                //System.out.println("Introduce el id_estudiante a buscar: ");
-                //var idEstudiante = Integer.parseInt(consola.nextLine());
-                //var estudiante = new Estudiante(idEstudiante);
-                //var encontrado = estudianteDAO.buscarEstudianteporId(estudiante);
-                //if (encontrado)
-                //    System.out.println("Estudiante encontrado: " + estudiante);
-                //else
-                //    System.out.println("Estudiante NO encontrado: " + estudiante);
+                System.out.println("Introduce el id_estudiante a buscar: ");
+                var idEstudiante = Integer.parseInt(consola.nextLine());
+                var estudiante = new Estudiante(idEstudiante);
+                var encontrado = estudianteDAO.buscarEstudiantePorId(estudiante);
+                if (encontrado)
+                    System.out.println("Estudiante encontrado: " + estudiante);
+                else
+                    System.out.println("Estudiante NO encontrado: " + estudiante);
             }
             case 3 -> {
                 System.out.println("Agregar estudiante: ");
