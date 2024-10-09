@@ -1,12 +1,17 @@
-import expressPromiseRouter from 'express-promise-router'; // Importar el módulo completo
-const router = expressPromiseRouter(); // Crear una instancia de router
+import Router from "express-promise-router";
+import { actualizarTarea, crearTarea, eliminarTarea, listarTareas, listarTrea } from "../controllers/tareas.controllers.js";
 
-import { actualizarTarea, crearTarea, eliminarTarea, listarTareas, listarTarea } from "../controllers/tareas.controllers.js";
+const router = Router();
 
-router.get("/tareas", listarTareas);
-router.get("/tareas/:id", listarTarea);
-router.post("/tareas", crearTarea);
+router.get("/tareas",listarTareas );
+
+router.get("/tareas/:id", listarTrea);
+
+router.post("/tareas",crearTarea);
+
 router.put("/tareas/:id", actualizarTarea);
+
 router.delete("/tareas/:id", eliminarTarea);
+
 
 export default router;
