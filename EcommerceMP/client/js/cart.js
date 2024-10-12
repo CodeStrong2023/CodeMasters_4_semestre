@@ -89,7 +89,7 @@ const displayCart = () => {
   `;
     modalContainer.append(modalFooter);
     // mp public key
-    const mp = new MercadoPago("APP_USR-50a86a18-e45d-4225-b49a-fc1f782a6bb6", {
+    const mp = new MercadoPago("TEST-37a85246-315f-4b6e-8efb-a8c981568f06", {
       locale: "es-AR",
     });
 
