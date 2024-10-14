@@ -25,6 +25,7 @@ products.forEach((product) => {
     </div>  
   `;
   shopContent.append(content);
+  
 
   const buyButton = content.querySelector(".btn");
   
