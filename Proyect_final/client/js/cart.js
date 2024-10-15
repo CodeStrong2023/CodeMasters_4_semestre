@@ -34,10 +34,10 @@ const displayCart = () => {
       const modalBody = document.createElement("div");
       modalBody.className = "modal-body";
       modalBody.innerHTML = `
-        <div class="product">
+        <div class="products">
             <img class="product-img" src="${product.img}" />
             <div class="product-info">
-                <h4>${product.productName}</h4>
+                <h4>${product.productName}</h4> 
             </div>
             <div class="quantity">
                 <span class="quantity-btn-decrease">-</span>
@@ -95,7 +95,7 @@ const displayCart = () => {
 
     //funcion para crear titulo del la info del carrito 
     const generateCartDescription = () => {
-        return cart.map(product => `${product.productName} (x${product.quanty})`).join(', ');
+        return cart.map(product => `${product.name} (x${product.quanty})`).join(', ');
     };
     
     document.getElementById("checkout-btn").addEventListener("click", async () => {
