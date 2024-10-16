@@ -1,0 +1,5 @@
+navegar a la carpeta server y ejecutar el comando 
+-npm run dev
+en mi caso es:
+PS C:\Users\Virginia\Downloads\pre tec programacion\seguno año\4to semestre\laboratorio4\CodeMasters_4_semestre\Proyect_final\server> npm 
+run dev
