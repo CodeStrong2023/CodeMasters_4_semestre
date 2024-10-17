@@ -47,32 +47,33 @@ products.forEach((product) => {
         img: product.img,
 
       });
-      displayCartCounter();
     }
-  });
+    displayCartCounter();
+  });cd
 
   // Función para generar las estrellas de calificación
-function generarEstrellas(stars) {
-  const estrellasLlenas = Math.floor(stars);
-  const mediaEstrella = stars % 1 !== 0;
-  let htmlEstrellas = '';
+  function generarEstrellas(stars) {
+    const estrellasLlenas = Math.floor(stars);
+    const mediaEstrella = stars % 1 !== 0;
+    let htmlEstrellas = '';
 
-  for (let i = 0; i < estrellasLlenas; i++) {
-    htmlEstrellas += '<i class="fa-solid fa-star"></i>';
-  }
-  if (mediaEstrella) {
-    htmlEstrellas += '<i class="fa-solid fa-star-half-stroke"></i>';
-  }
-  while (htmlEstrellas.split('i').length - 1 < 5) {
-    htmlEstrellas += '<i class="fa-sharp fa-regular fa-star"></i>';
-  }
+    for (let i = 0; i < estrellasLlenas; i++) {
+      htmlEstrellas += '<i class="fa-solid fa-star"></i>';
+    }
+    if (mediaEstrella) {
+      htmlEstrellas += '<i class="fa-solid fa-star-half-stroke"></i>';
+    }
+    while (htmlEstrellas.split('i').length - 1 < 5) {
+      htmlEstrellas += '<i class="fa-sharp fa-regular fa-star"></i>';
+    }
 
-  return htmlEstrellas;
-}
+    return htmlEstrellas;
+  }
 
 // Función para actualizar el contador del carrito
   function displayCartCounter() {
   const cartCounter = document.getElementById("cart-counter");
   cartCounter.innerText = cart.reduce((acc, prod) => acc + prod.quanty, 0);
-}
+ }
+  
 });
