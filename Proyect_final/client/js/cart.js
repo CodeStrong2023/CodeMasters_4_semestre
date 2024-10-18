@@ -4,13 +4,13 @@ const cartBtn = document.getElementById("cart-btn");
 const cartCounter = document.getElementById("cart-counter");
 
 const displayCart = () => {
-  modalContainer.innerHTML = ""; // Limpiar el contenido previo del modal
+  modalContainer.innerHTML = ""; // Clear the modal content
   modalContainer.style.display = "block";
   modalOverlay.style.display = "block";
 
   // modal Header
   const modalHeader = document.createElement("div");
-
+  modalHeader.className = "modal-header";
   const modalClose = document.createElement("div");
   modalClose.innerText = "❌";
   modalClose.className = "modal-close";
@@ -34,10 +34,10 @@ const displayCart = () => {
       const modalBody = document.createElement("div");
       modalBody.className = "modal-body";
       modalBody.innerHTML = `
-        <div class="products">
+        <div class="product">
             <img class="product-img" src="${product.img}" />
             <div class="product-info">
-                <h4>${product.productName}</h4> 
+                <h4>${product.productName}</h4>
             </div>
             <div class="quantity">
                 <span class="quantity-btn-decrease">-</span>
@@ -47,29 +47,27 @@ const displayCart = () => {
             <div class="price">${product.price * product.quanty} $</div>
             <div class="delete-product">❌</div>
         </div>
-    `;
+      `;
       modalContainer.append(modalBody);
 
-      const decrese = modalBody.querySelector(".quantity-btn-decrease");
-      decrese.addEventListener("click", () => {
+      const decrease = modalBody.querySelector(".quantity-btn-decrease");
+      decrease.addEventListener("click", () => {
         if (product.quanty > 1) {
           product.quanty--;
         } else {
-          // Eliminar el producto del carrito si la cantidad es 1
           cart = cart.filter((item) => item.id !== product.id);
         }
-        displayCart(); // Actualizar el modal
+        displayCart();
         displayCartCounter();
       });
 
-      const increse = modalBody.querySelector(".quantity-btn-increase");
-      increse.addEventListener("click", () => {
+      const increase = modalBody.querySelector(".quantity-btn-increase");
+      increase.addEventListener("click", () => {
         product.quanty++;
-        displayCart(); // Actualizar el modal
+        displayCart();
         displayCartCounter();
       });
 
-      // Funcionalidad para eliminar el producto
       const deleteProduct = modalBody.querySelector(".delete-product");
       deleteProduct.addEventListener("click", () => {
         deleteCartProduct(product.id);
@@ -84,90 +82,81 @@ const displayCart = () => {
         (acc, item) => acc + item.price * item.quanty,
         0
       )} $</div>
-        <button class="btn-primary" id="checkout-btn"> go to checkout </button>
-       <div id="wallet_container"></div>
-  `;
+      <button class="btn-primary" id="checkout-btn">Go to checkout</button>
+      <div id="wallet_container"></div>
+    `;
     modalContainer.append(modalFooter);
-    // mp public key
+
+    // Mercado Pago integration
     const mp = new MercadoPago("APP_USR-50a86a18-e45d-4225-b49a-fc1f782a6bb6", {
       locale: "es-AR",
     });
 
-    //funcion para crear titulo del la info del carrito 
     const generateCartDescription = () => {
-        return cart.map(product => `${product.name} (x${product.quanty})`).join(', ');
+      return cart.map(product => `${product.productName} (x${product.quanty})`).join(', ');
     };
-    
+
     document.getElementById("checkout-btn").addEventListener("click", async () => {
-        try {
-          const total = cart.reduce((acc, item) => acc + item.price * item.quanty, 0);
-          const orderData = {
-            title: generateCartDescription(),
-            quantity: 1,
-            price: total,
-          };
-      
-          const response = await fetch("http://localhost:3000/create_preference", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(orderData),
-          });
-      
-          const preference = await response.json();
-          createCheckoutButton(preference.id);
-        } catch (error) {
-          console.error("Error:", error); // Log the error for debugging
-          alert("Hubo un error al crear la preferencia");
-        }
-      });
-      
-
-      let isButtonCreated = false; // Flag to check if the Mercado Pago button is already created
-
-      const createCheckoutButton = (preferenceId) => {
-        if (isButtonCreated) return; // Prevent multiple buttons from being created
-      
-        const bricksBuilder = mp.bricks();
-      
-        const renderComponent = async () => {
-          if (window.checkoutButton) window.checkoutButton.unmount(); // Clean previous button if it exists
-      
-          await bricksBuilder.create("wallet", "wallet_container", {
-            initialization: {
-              preferenceId: preferenceId,
-            },
-          });
-      
-          isButtonCreated = true; // Set the flag to true after the button is created
+      try {
+        const total = cart.reduce((acc, item) => acc + item.price * item.quanty, 0);
+        const orderData = {
+          title: generateCartDescription(),
+          quantity: 1,
+          price: total,
         };
 
-      renderComponent();
+        const response = await fetch("http://localhost:3000/create_preference", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(orderData),
+        });
+
+        const preference = await response.json();
+        createCheckoutButton(preference.id);
+      } catch (error) {
+        console.error("Error:", error);
+        alert("Hubo un error al crear la preferencia");
+      }
+    });
+
+    // Function to create the Mercado Pago checkout button
+    const createCheckoutButton = (preferenceId) => {
+      // Remove the existing checkout button
+      const existingCheckoutButton = document.querySelector(".mercadopago-button");
+      if (existingCheckoutButton) {
+        existingCheckoutButton.remove();
+      }
+
+      const walletContainer = document.getElementById("wallet_container");
+      walletContainer.innerHTML = ""; // Clear previous content
+
+      mp.checkout({
+        preference: {
+          id: preferenceId,
+        },
+        render: {
+          container: "#wallet_container",
+          label: "Pagar con Mercado Pago",
+        },
+      });
     };
+
   } else {
-    const modalText = document.createElement("h2");
-    modalText.className = "modal-body";
-    modalText.innerText = "your cart is empty";
-    modalContainer.append(modalText);
+    const emptyCartMessage = document.createElement("div");
+    emptyCartMessage.className = "empty-cart";
+    emptyCartMessage.innerHTML = `<h4>Tu carrito está vacío</h4>`;
+    modalContainer.append(emptyCartMessage);
   }
 };
 
-cartBtn.addEventListener("click", displayCart);
-
 const deleteCartProduct = (id) => {
-  const foundId = cart.findIndex((element) => element.id === id);
-  cart.splice(foundId, 1);
+  cart = cart.filter((product) => product.id !== id);
   displayCart();
   displayCartCounter();
 };
 
-const displayCartCounter = () => {
-  const cartLength = cart.reduce((acc, el) => acc + el.quanty, 0);
-  if (cartLength > 0) {
-    cartCounter.style.display = "block";
-    cartCounter.innerText = cartLength;
-  } else {
-    cartCounter.style.display = "none";
-  }
-};
+cartBtn.addEventListener("click", () => {
+  displayCart();
+});
