@@ -32,7 +32,10 @@
     "@types/express": "^5.0.0",
     "@types/express-myconnection": "^1.0.37",
     "@types/express-session": "^1.18.0",
-    "nodemon": "^3.1.7"
+    "autoprefixer": "^10.4.20",
+    "nodemon": "^3.1.7",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.14"
   },
   "description": ""
 }
