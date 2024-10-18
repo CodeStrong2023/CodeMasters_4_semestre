@@ -20,14 +20,13 @@ products.forEach((product) => {
         <div class="product_stars">
           ${generarEstrellas(product.stars)}
         </div>
-        <a href="#" class="btn">Añadir al carrito</a>
+        <button class="btn add-to-cart">Añadir al carrito</button>
       </div>
     </div>  
   `;
   shopContent.append(content);
-  
 
-  const buyButton = content.querySelector(".btn");
+  const buyButton = content.querySelector(".add-to-cart");
   
   buyButton.addEventListener("click", () => {
     const repeat = cart.some((repeatProduct) => repeatProduct.id === product.id);
@@ -37,6 +36,7 @@ products.forEach((product) => {
         if (prod.id === product.id) {
           prod.quanty++;
         }
+        return prod;
       });
     } else {
       cart.push({
@@ -45,13 +45,14 @@ products.forEach((product) => {
         price: product.price,
         quanty: 1,
         img: product.img,
-
       });
-      displayCartCounter();
     }
+    console.log("Cart updated:", cart);
+    displayCartCounter();
   });
+});
 
-  // Función para generar las estrellas de calificación
+// Función para generar las estrellas de calificación
 function generarEstrellas(stars) {
   const estrellasLlenas = Math.floor(stars);
   const mediaEstrella = stars % 1 !== 0;
@@ -71,8 +72,9 @@ function generarEstrellas(stars) {
 }
 
 // Función para actualizar el contador del carrito
-  function displayCartCounter() {
+function displayCartCounter() {
   const cartCounter = document.getElementById("cart-counter");
-  cartCounter.innerText = cart.reduce((acc, prod) => acc + prod.quanty, 0);
+  const totalQuanty = cart.reduce((acc, prod) => acc + prod.quanty, 0);
+  cartCounter.innerText = totalQuanty;
+  cartCounter.style.display = totalQuanty > 0 ? "block" : "none";
 }
-});

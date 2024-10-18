@@ -64,7 +64,7 @@ app.use(
     },
     "single"
   )
-);
+);;
 
 // Configuración de sesión
 app.use(

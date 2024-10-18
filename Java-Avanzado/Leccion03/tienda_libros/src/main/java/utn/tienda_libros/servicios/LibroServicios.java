@@ -25,12 +25,12 @@ public class LibroServicios implements ILibroServicios{
     }
 
     @Override
-    public void garadarLibro(Libro libro) {
+    public void guardarLibro(Libro libro) {
         libroRepositorio.save(libro);
     }
 
     @Override
-    public void eliminarLibre(Libro libro) {
+    public void eliminarLibro(Libro libro) {
         libroRepositorio.delete(libro);
     }
 }
