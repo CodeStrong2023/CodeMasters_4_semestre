@@ -20,7 +20,7 @@ products.forEach((product) => {
         <div class="product_stars">
           ${generarEstrellas(product.stars)}
         </div>
-        <button class="btn add-to-cart">Añadir al carrito</button>
+        <button class="btn add-to-cart text-white" style="border-radius: 20px">Añadir al carrito</button>
       </div>
     </div>  
   `;

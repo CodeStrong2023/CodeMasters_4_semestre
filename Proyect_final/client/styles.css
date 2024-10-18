@@ -32,10 +32,10 @@
     width: 290px;
     height: 400px;
     box-shadow: 0 0 8px #669BBC;
-    border-radius: 5px;
+    border-radius: 20px;
     text-align: center;
     padding: 10px 20px;
-    background: #f6f6f6;
+    background: #ffffffff;
     margin: 10px;
     display: flex;
     flex-direction: column;
@@ -87,16 +87,16 @@
 .pequeña_tarjeta i{
     width: 45px;
     height: 45px;
-    border-radius: 5px;
+    border-radius: 20px;
     font-size: 18px;
     margin: 2px 0;
     line-height: 40px;
-    border: 2px solid aquamarine;
+    border: 2px solid #669BBC;
     transition: 0.2s;
 }
 
 .pequeña_tarjeta i:hover{
-    color: aqua;
+    color: #669BBC;
 }
 .product_text {
     display: flex;
@@ -128,8 +128,7 @@
 .product_text .btn{
     text-decoration: none;
     padding: 10px 20px;
-    background: linear-gradient(to right, rgb(27, 172, 172), rgb(71, 230, 230));
-    color: white;
+    background: rgb(102,155,188);
     cursor: pointer;
 }
 .cart-btn-container {
@@ -172,7 +171,7 @@
 /*modal*/
 .modal-overlay {
     display: none;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: #40434A;
     position: fixed;
     top: 0;
     left: 0;
