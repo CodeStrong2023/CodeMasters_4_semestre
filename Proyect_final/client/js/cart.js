@@ -157,6 +157,4 @@ const deleteCartProduct = (id) => {
   displayCartCounter();
 };
 
-cartBtn.addEventListener("click", () => {
-  displayCart();
-});
+cartBtn.addEventListener("click", displayCart);

@@ -58,7 +58,7 @@ app.use(
     {
       host: "localhost",
       user: "root",
-      password: "root",
+      password: "laujaz1706",
       port: 3306,
       database: "ecommerce",
     },
