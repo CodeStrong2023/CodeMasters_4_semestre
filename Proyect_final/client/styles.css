@@ -13,7 +13,15 @@
     background-color: #669BBC !important;
 }
 
+.categorias{
+    font-size: 2rem;
+}
+
 /*Productos*/
+
+.productos{
+    font-size: 2rem;
+}
 
 .card-products-container {
     margin: 5vh auto;

@@ -4,8 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>PixelPoint</title>
     <link rel="stylesheet" href="styles.css" />
-    <title>StyleHub- Ecommerce</title>
     <link rel="stylesheet" href="/client/media/styles.css">
     <link rel="icon" type="image/png" href="media/logo.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -17,76 +18,74 @@
   <body>
 
     <header>
-        <nav class="flex justify-between nav items-center py-5 text-white px-6 shadow-md">
-            <div class="flex items-center">
-                <h1 class="text-3xl font-bold">StyleHub</h1>
-            </div>
+      <nav class="flex justify-between nav items-center py-5 text-white px-6 shadow-md">
+        <div class="flex items-center">
+          <h1 class="text-3xl font-bold">PixelPoint</h1>
+        </div>
     
-            <ul class="flex space-x-8">
-                <li class="nav-item">
-                    <a href="#" class="text-lg font-medium hover:text-gray-300 transition duration-300">Productos</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="text-lg font-medium hover:text-gray-300 transition duration-300">Nosotros</a>
-                </li>
+        <ul class="flex space-x-8">
+          <li class="nav-item">
+            <a href="#" class="text-lg font-medium hover:text-gray-300 transition duration-300">Productos</a>
+          </li>
 
-                <li class="nav-item">
-                    <a href="/logout" class="nav-link font-semibold bg-red-500 hover:bg-red-700 py-2 px-4 rounded-md transition duration-300">Salir</a>
-                </li>
+          <li class="nav-item">
+            <a href="#" class="text-lg font-medium hover:text-gray-300 transition duration-300">Nosotros</a>
+          </li>
 
-            </ul>
-        </nav>
+          <li class="nav-item">
+            <a href="/logout" class="nav-link font-semibold bg-red-500 hover:bg-red-700 py-2 px-4 rounded-md transition duration-300">Salir</a>
+          </li>
+        </ul>
+      </nav>
     </header>
 
     <div class="container">
-      
       <div class="container mx-auto">
-        <h1 class="ml-16 m-4 " style="font-size: 2rem">Categorias</h1>
-              
+        <h1 class="categorias">Categorias</h1><!--style="font-size: 2rem"-->    
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 ml-16">
           <!-- Tarjeta 1 -->
-        <div class="bg-white rounded-3xl shadow-md border border-gray-500 flex flex-col items-center p-4 max-w-sm">
-          <h3 class="text-lg font-light mt-2">Variedad de <span class="font-bold">Notebook</span></h3>
-          <img src="./media/img/noteboock.jpg" alt="Notebook" class="my-3 w-36"> <!-- Reduje el tamaño de la imagen -->
-        </div>
+          <div class="bg-white rounded-3xl shadow-md border border-gray-500 flex flex-col items-center p-4 max-w-sm">
+            <h3 class="text-lg font-light mt-2">Variedad de <span class="font-bold">Notebook</span></h3>
+            <img src="./media/img/noteboock.jpg" alt="Notebook" class="my-3 w-36"> <!-- Reduje el tamaño de la imagen -->
+          </div>
               
-        <!-- Tarjeta 2 -->
-        <div class="bg-white rounded-3xl shadow-md border border-gray-500 flex flex-col items-center p-4 max-w-sm">
-          <h3 class="text-lg font-light mt-2">Auriculares <span class="font-bold">inalámbricos</span></h3>
-          <img src="./media/img/inalambricos.jpg" alt="Auriculares" class="my-3 w-36"> <!-- Reduje el tamaño de la imagen -->
-        </div>
-              
-        <!-- Tarjeta 3 -->
-        <div class="bg-white rounded-3xl shadow-md border border-gray-500 flex flex-col items-center p-4 max-w-sm">
-          <h3 class="text-lg font-light mt-2">Novedades en <span class="font-bold">Teclados</span></h3>
-          <img src="./media/img/teclado.jpg" alt="Teclado" class="my-3 w-36"> <!-- Reduje el tamaño de la imagen -->
-                  
-        </div>
-              
-                  
-        <!-- Tarjeta 4 -->
-        <div class="bg-white rounded-3xl shadow-md border border-gray-500 flex flex-col items-center p-4 max-w-sm">
-          <h3 class="text-lg font-light mt-2">Selección de <span class="font-bold">Parlantes</span></h3>
-          <img src="./media/img/parlantes.jpg" alt="Parlante" class="my-3 w-36"> <!-- Reduje el tamaño de la imagen -->
-        </div>
-              
-        <!-- Tarjeta 5 -->
-        <div class="bg-white rounded-3xl shadow-md border border-gray-500 flex flex-col items-center p-4 max-w-sm">
-          <h3 class="text-lg font-light mt-2">Toda clase de <span class="font-bold">Auriculares</span></h3>
-          <img src="./media/img/auriculares.jpg" alt="Auriculares 2" class="my-3 w-36"> <!-- Reduje el tamaño de la imagen -->
-        </div>
-              
-        <!-- Tarjeta 6 -->
-        <div class="bg-white rounded-3xl shadow-md border border-gray-500 flex flex-col items-center p-4 max-w-sm">
-          <h3 class="text-lg font-light mt-2">Variedad en <span class="font-bold">Smartphones</span></h3>
-          <img src="./media/img/telefono.jpg" alt="Smartphones" class="my-3 w-36"> <!-- Reduje el tamaño de la imagen -->
+          <!-- Tarjeta 2 -->
+          <div class="bg-white rounded-3xl shadow-md border border-gray-500 flex flex-col items-center p-4 max-w-sm">
+            <h3 class="text-lg font-light mt-2">Auriculares <span class="font-bold">inalámbricos</span></h3>
+            <img src="./media/img/inalambricos.jpg" alt="Auriculares" class="my-3 w-36"> <!-- Reduje el tamaño de la imagen -->
+          </div>
+              <!-- Tarjeta 3 -->
+          <div class="bg-white rounded-3xl shadow-md border border-gray-500 flex flex-col items-center p-4 max-w-sm">
+            <h3 class="text-lg font-light mt-2">Novedades en <span class="font-bold">Teclados</span></h3>
+            <img src="./media/img/teclado.jpg" alt="Teclado" class="my-3 w-36"> <!-- Reduje el tamaño de la imagen -->
+                    
+          </div>
+                
+                    
+          <!-- Tarjeta 4 -->
+          <div class="bg-white rounded-3xl shadow-md border border-gray-500 flex flex-col items-center p-4 max-w-sm">
+            <h3 class="text-lg font-light mt-2">Selección de <span class="font-bold">Parlantes</span></h3>
+            <img src="./media/img/parlantes.jpg" alt="Parlante" class="my-3 w-36"> <!-- Reduje el tamaño de la imagen -->
+          </div>
+                
+          <!-- Tarjeta 5 -->
+          <div class="bg-white rounded-3xl shadow-md border border-gray-500 flex flex-col items-center p-4 max-w-sm">
+            <h3 class="text-lg font-light mt-2">Toda clase de <span class="font-bold">Auriculares</span></h3>
+            <img src="./media/img/auriculares.jpg" alt="Auriculares 2" class="my-3 w-36"> <!-- Reduje el tamaño de la imagen -->
+          </div>
+                
+          <!-- Tarjeta 6 -->
+          <div class="bg-white rounded-3xl shadow-md border border-gray-500 flex flex-col items-center p-4 max-w-sm">
+            <h3 class="text-lg font-light mt-2">Variedad en <span class="font-bold">Smartphones</span></h3>
+            <img src="./media/img/telefono.jpg" alt="Smartphones" class="my-3 w-36"> <!-- Reduje el tamaño de la imagen -->
+          </div>
         </div>
       </div>
     </div>
               
     <!--shop content-->    
     <div class="card-products-container">
-      <h1 class="ml-11 mb-4" style="font-size: 2rem">Productos</h1>
+      <h1 class="productos">Productos</h1><!--style="font-size: 2rem"-->
       <div class="card-products" id="shopContent"></div>
     </div>
 
@@ -101,6 +100,7 @@
     <div class="modal-overlay" id="modal-overlay"></div>
     <div class="modal-container" id="modal-container"></div>
     </div>
+        
 
     <script src="js/products.js"></script>
     <script src="js/index.js"></script>
