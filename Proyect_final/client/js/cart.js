@@ -11,21 +11,25 @@ const displayCart = () => {
   // modal Header
   const modalHeader = document.createElement("div");
   modalHeader.className = "modal-header";
+  //Botón para cerrar el modal
   const modalClose = document.createElement("div");
   modalClose.innerText = "❌";
   modalClose.className = "modal-close";
   modalHeader.append(modalClose);
 
+  //Evento para cerrar el modal
   modalClose.addEventListener("click", () => {
     modalContainer.style.display = "none";
     modalOverlay.style.display = "none";
   });
 
+  //Titulo del modal
   const modalTitle = document.createElement("div");
   modalTitle.innerText = "Cart";
   modalTitle.className = "modal-title";
   modalHeader.append(modalTitle);
 
+  //Agregar el header al contenedor del modal
   modalContainer.append(modalHeader);
 
   // modal Body
@@ -40,9 +44,9 @@ const displayCart = () => {
                 <h4>${product.productName}</h4>
             </div>
             <div class="quantity">
-                <span class="quantity-btn-decrease">-</span>
+                <span class="quantity-btn-decrese">-</span>
                 <span class="quantity-input">${product.quanty}</span>
-                <span class="quantity-btn-increase">+</span>
+                <span class="quantity-btn-increse">+</span>
             </div>
             <div class="price">${product.price * product.quanty} $</div>
             <div class="delete-product">❌</div>
@@ -50,24 +54,23 @@ const displayCart = () => {
       `;
       modalContainer.append(modalBody);
 
-      const decrease = modalBody.querySelector(".quantity-btn-decrease");
-      decrease.addEventListener("click", () => {
-        if (product.quanty > 1) {
+      const decrese = modalBody.querySelector(".quantity-btn-decrese");
+      decrese.addEventListener("click", () => {
+        if (product.quanty !== 1) {
           product.quanty--;
+          displayCart();
         } else {
           cart = cart.filter((item) => item.id !== product.id);
         }
-        displayCart();
-        displayCartCounter();
       });
 
-      const increase = modalBody.querySelector(".quantity-btn-increase");
-      increase.addEventListener("click", () => {
+      const increse = modalBody.querySelector(".quantity-btn-increse");
+      increse.addEventListener("click", () => {
         product.quanty++;
         displayCart();
-        displayCartCounter();
       });
 
+      //borrar producto
       const deleteProduct = modalBody.querySelector(".delete-product");
       deleteProduct.addEventListener("click", () => {
         deleteCartProduct(product.id);
@@ -75,13 +78,12 @@ const displayCart = () => {
     });
 
     // modal Footer
+    const total = cart.reduce((acc, el) => acc + el.price * el.quanty, 0);
+
     const modalFooter = document.createElement("div");
     modalFooter.className = "modal-footer";
     modalFooter.innerHTML = `
-      <div class="total-price">Total: ${cart.reduce(
-        (acc, item) => acc + item.price * item.quanty,
-        0
-      )} $</div>
+      <div class="total-price">Total: ${total}</div>
       <button class="btn-primary" id="checkout-btn">Go to checkout</button>
       <div id="wallet_container"></div>
     `;
@@ -152,9 +154,10 @@ const displayCart = () => {
 };
 
 const deleteCartProduct = (id) => {
-  cart = cart.filter((product) => product.id !== id);
+  const foundId = cart.findIndex((element)=> element.id === id);
+  cart.splice(foundId, 1);
   displayCart();
-  displayCartCounter();
+
 };
 
 cartBtn.addEventListener("click", displayCart);
