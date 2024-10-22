@@ -60,7 +60,7 @@ app.use(
       user: "root",
       password: "laujaz1706",
       port: 3306,
-      database: "nodelogin",
+      database: "ecommerce",
     },
     "single"
   )
