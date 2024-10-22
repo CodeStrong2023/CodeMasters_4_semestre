@@ -1,35 +1,47 @@
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
 const modalContainer = document.getElementById("modal-container");
 const modalOverlay = document.getElementById("modal-overlay");
 const cartBtn = document.getElementById("cart-btn");
 const cartCounter = document.getElementById("cart-counter");
 
+// Función para guardar el carrito en localStorage
+const saveCart = () => {
+  localStorage.setItem("cart", JSON.stringify(cart));
+};
+
+// Función para actualizar el contador del carrito
+const updateCartCounter = () => {
+  const totalQuanty = cart.reduce((acc, prod) => acc + prod.quanty, 0);
+  cartCounter.textContent = totalQuanty;
+  cartCounter.style.display = totalQuanty > 0 ? "block" : "none";
+};
+
 const displayCart = () => {
-  modalContainer.innerHTML = ""; // Clear the modal content
+  modalContainer.innerHTML = ""; // Limpiar el contenido previo del modal
   modalContainer.style.display = "block";
   modalOverlay.style.display = "block";
 
   // modal Header
   const modalHeader = document.createElement("div");
   modalHeader.className = "modal-header";
-  //Botón para cerrar el modal
+
   const modalClose = document.createElement("div");
   modalClose.innerText = "❌";
   modalClose.className = "modal-close";
   modalHeader.append(modalClose);
 
-  //Evento para cerrar el modal
   modalClose.addEventListener("click", () => {
     modalContainer.style.display = "none";
     modalOverlay.style.display = "none";
   });
+  ;
 
-  //Titulo del modal
   const modalTitle = document.createElement("div");
-  modalTitle.innerText = "Cart";
+  modalTitle.innerText = "Carrito";
   modalTitle.className = "modal-title";
   modalHeader.append(modalTitle);
 
-  //Agregar el header al contenedor del modal
   modalContainer.append(modalHeader);
 
   // modal Body
@@ -44,9 +56,9 @@ const displayCart = () => {
                 <h4>${product.productName}</h4>
             </div>
             <div class="quantity">
-                <span class="quantity-btn-decrese">-</span>
+                <span class="quantity-btn-decrease">-</span>
                 <span class="quantity-input">${product.quanty}</span>
-                <span class="quantity-btn-increse">+</span>
+                <span class="quantity-btn-increase">+</span>
             </div>
             <div class="price">${product.price * product.quanty} $</div>
             <div class="delete-product">❌</div>
@@ -54,23 +66,22 @@ const displayCart = () => {
       `;
       modalContainer.append(modalBody);
 
-      const decrese = modalBody.querySelector(".quantity-btn-decrese");
+      const decrese = modalBody.querySelector(".quantity-btn-decrease");
       decrese.addEventListener("click", () => {
-        if (product.quanty !== 1) {
+        if (product.quanty > 1) {
           product.quanty--;
-          displayCart();
+          updateProductQuantity(product.id, product.quanty); // Optimización
         } else {
-          cart = cart.filter((item) => item.id !== product.id);
+          deleteCartProduct(product.id);
         }
       });
 
-      const increse = modalBody.querySelector(".quantity-btn-increse");
+      const increse = modalBody.querySelector(".quantity-btn-increase");
       increse.addEventListener("click", () => {
         product.quanty++;
-        displayCart();
+        updateProductQuantity(product.id, product.quanty); // Optimización
       });
 
-      //borrar producto
       const deleteProduct = modalBody.querySelector(".delete-product");
       deleteProduct.addEventListener("click", () => {
         deleteCartProduct(product.id);
@@ -78,73 +89,22 @@ const displayCart = () => {
     });
 
     // modal Footer
-    const total = cart.reduce((acc, el) => acc + el.price * el.quanty, 0);
-
     const modalFooter = document.createElement("div");
     modalFooter.className = "modal-footer";
     modalFooter.innerHTML = `
-      <div class="total-price">Total: ${total}</div>
-      <button class="btn-primary" id="checkout-btn">Go to checkout</button>
+      <div class="total-price">Total: ${calculateTotalPrice()} $</div>
+      <button class="btn-primary" id="checkout-btn">Ir a pagar</button>
       <div id="wallet_container"></div>
     `;
     modalContainer.append(modalFooter);
 
-    // Mercado Pago integration
+    // Configuración de MercadoPago
     const mp = new MercadoPago("APP_USR-50a86a18-e45d-4225-b49a-fc1f782a6bb6", {
       locale: "es-AR",
     });
 
-    const generateCartDescription = () => {
-      return cart.map(product => `${product.productName} (x${product.quanty})`).join(', ');
-    };
-
-    document.getElementById("checkout-btn").addEventListener("click", async () => {
-      try {
-        const total = cart.reduce((acc, item) => acc + item.price * item.quanty, 0);
-        const orderData = {
-          title: generateCartDescription(),
-          quantity: 1,
-          price: total,
-        };
-
-        const response = await fetch("http://localhost:3000/create_preference", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(orderData),
-        });
-
-        const preference = await response.json();
-        createCheckoutButton(preference.id);
-      } catch (error) {
-        console.error("Error:", error);
-        alert("Hubo un error al crear la preferencia");
-      }
-    });
-
-    // Function to create the Mercado Pago checkout button
-    const createCheckoutButton = (preferenceId) => {
-      // Remove the existing checkout button
-      const existingCheckoutButton = document.querySelector(".mercadopago-button");
-      if (existingCheckoutButton) {
-        existingCheckoutButton.remove();
-      }
-
-      const walletContainer = document.getElementById("wallet_container");
-      walletContainer.innerHTML = ""; // Clear previous content
-
-      mp.checkout({
-        preference: {
-          id: preferenceId,
-        },
-        render: {
-          container: "#wallet_container",
-          label: "Pagar con Mercado Pago",
-        },
-      });
-    };
-
+    const checkoutBtn = document.getElementById("checkout-btn");
+    checkoutBtn.addEventListener("click", () => handleCheckout(mp));
   } else {
     const emptyCartMessage = document.createElement("div");
     emptyCartMessage.className = "empty-cart";
@@ -153,11 +113,85 @@ const displayCart = () => {
   }
 };
 
-const deleteCartProduct = (id) => {
-  const foundId = cart.findIndex((element)=> element.id === id);
-  cart.splice(foundId, 1);
-  displayCart();
-
+const updateProductQuantity = (id, quanty) => {
+  const product = cart.find((item) => item.id === id);
+  if (product) {
+    product.quanty = quanty;
+    saveCart();
+    displayCart();
+    updateCartCounter();
+  }
 };
 
+const deleteCartProduct = (id) => {
+  cart = cart.filter((product) => product.id !== id);
+  saveCart();
+  displayCart();
+  updateCartCounter();
+};
+
+const calculateTotalPrice = () => {
+  return cart.reduce((acc, product) => acc + product.price * product.quanty, 0);
+};
+
+// Función de checkout
+const handleCheckout = async (mp) => {
+  const total = calculateTotalPrice();
+  if (total === 0) {
+    alert("No puedes proceder con el pago de un carrito vacío");
+    return;
+  }
+
+  // Controlar errores en el fetch
+  try {
+    const response = await fetch("http://localhost:3000/create_preference", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        title: generateCartDescription(),
+        quantity: 1,
+        price: total,
+      }),
+    });
+
+    const preference = await response.json();
+    createCheckoutButton(mp, preference.id);
+  } catch (error) {
+    console.error("Error:", error);
+    alert("Hubo un error al crear la preferencia de pago.");
+  }
+};
+
+
+const createCheckoutButton = (mp, preferenceId) => {
+  // Limpiar el contenedor antes de crear un nuevo botón
+  const walletContainer = document.getElementById("wallet_container");
+  walletContainer.innerHTML = '';
+  
+  const bricksBuilder = mp.bricks();
+  bricksBuilder.create("wallet", "wallet_container", {
+    initialization: {
+      preferenceId,
+    },
+  });
+};
+
+const generateCartDescription = () => {
+  return cart
+    .map((product) => `${product.productName} (x${product.quanty})`)
+    .join(", ");
+};
+
+// Event Listeners
 cartBtn.addEventListener("click", displayCart);
+
+// Cerrar el modal al hacer clic fuera
+// modalOverlay.addEventListener("click", (e) => {
+//   if (e.target === modalOverlay) {
+//     modalContainer.style.display = "none";
+//     modalOverlay.style.display = "none";
+//   }
+// });
+

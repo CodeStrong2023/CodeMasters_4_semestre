@@ -18,7 +18,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 3000;
 
 // Configurar MercadoPago
 const client = new MercadoPagoConfig({
@@ -57,14 +57,14 @@ app.use(
     mysql,
     {
       host: "localhost",
-      user: "root",
-      password: "laujaz1706",
+      user: "myuser",
+      password: "Vir48910",
       port: 3306,
-      database: "nodelogin",
+      database: "ecommerce",
     },
     "single"
   )
-);;
+);
 
 // Configuración de sesión
 app.use(
