@@ -1,6 +1,7 @@
+// index.js
 const shopContent = document.getElementById("shopContent");
-const cart = [];
 
+// Usar el cart definido en cart.js
 products.forEach((product) => {
   const content = document.createElement("div");
   content.className = "card";
@@ -47,12 +48,11 @@ products.forEach((product) => {
         img: product.img,
       });
     }
-    console.log("Cart updated:", cart);
-    displayCartCounter();
+    saveCart(); // Guardar en localStorage
+    updateCartCounter(); // Actualizar contador
   });
 });
 
-// Función para generar las estrellas de calificación
 function generarEstrellas(stars) {
   const estrellasLlenas = Math.floor(stars);
   const mediaEstrella = stars % 1 !== 0;
@@ -69,12 +69,4 @@ function generarEstrellas(stars) {
   }
 
   return htmlEstrellas;
-}
-
-// Función para actualizar el contador del carrito
-function displayCartCounter() {
-  const cartCounter = document.getElementById("cart-counter");
-  const totalQuanty = cart.reduce((acc, prod) => acc + prod.quanty, 0);
-  cartCounter.innerText = totalQuanty;
-  cartCounter.style.display = totalQuanty > 0 ? "block" : "none";
 }
