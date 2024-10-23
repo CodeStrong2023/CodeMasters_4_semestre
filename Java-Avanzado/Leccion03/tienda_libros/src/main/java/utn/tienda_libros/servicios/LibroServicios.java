@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import utn.tienda_libros.modelo.Libro;
 import utn.tienda_libros.repositorio.LibroRepositorio;
-
+import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
@@ -24,6 +24,7 @@ public class LibroServicios implements ILibroServicios{
         return libro;
     }
 
+    @Transactional
     @Override
     public void guardarLibro(Libro libro) {
         libroRepositorio.save(libro);
