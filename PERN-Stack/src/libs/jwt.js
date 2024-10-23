@@ -7,6 +7,5 @@ export const createAccessToken = (paylod) => {
             if (err) reject(err);
             resolve(token);
         });
-    });
-    
-}
+    }); 
+};
