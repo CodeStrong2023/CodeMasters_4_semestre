@@ -1,22 +1,92 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    font-family: sans-serif;
+    box-sizing: border-box;  
+}
+.audiowide-regular {
+    font-family: "Audiowide", sans-serif;
+    font-weight: 400;
+    font-style: normal;
 }
 
 .primary{
-    background-color: #669BBC !important;
+    background-color: #66FFFF  !important;
 }
 
 .nav{
-    background-color: #669BBC !important;
+    background-color: #0000FF  !important;
+    height: 50px;
 }
+
+
+.carousel-container {
+    position: relative;
+    max-width: 100%;
+    margin: auto;
+    overflow: hidden;
+}
+  
+.carousel {
+    display: flex;
+    transition: transform 0.5s ease;
+    height: 350px;
+}
+  
+.carousel-item {
+    display: none;
+    min-width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    height: 300px;
+    display: block;
+}
+.carousel-item.active { /* Aplica la clase active aquí para mostrar el elemento */
+    display: block; /* Solo muestra el item activo */
+}
+.carousel-item img {
+    width: 100%; /* Hce que la imagen ocupe todo el ancho del contenedor */
+    height: 320px; /* Mantiene la relación de aspecto de la imagen */
+    object-fit: cover; /* Cubre el área sin distorción, recortando lo que sea necesario */
+    display: block; /* Asegura que no haya espacios en la parte inferior */
+}
+  
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+  
+.prev {
+    left: 10px;
+}
+  
+.next {
+    right: 10px;
+}
+  
 
 .categorias{
     font-size: 2rem;
 }
 
+.presentacion h1{
+    font-size: 35px;
+    color: #00CCFF;
+    font-weight: bold;
+    text-align: center;
+}
+
+.presentacion h2 {
+    font-size: 20px;
+    color: #00CCFF;
+    text-align: center;
+    
+}
 /*Productos*/
 
 .productos{

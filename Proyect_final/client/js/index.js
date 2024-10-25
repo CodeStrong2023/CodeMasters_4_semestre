@@ -1,6 +1,36 @@
 // index.js
 const shopContent = document.getElementById("shopContent");
 
+//Función del carousel
+document.addEventListener("DOMContentLoaded", () =>{
+  let currentIndex = 0;//indice de a imagén actual
+  const items = document.querySelectorAll(".carousel-item");// Selecciona todos los elementos del carrusel
+  
+  //Muestra la primera imagen
+  items[currentIndex].classList.add("active");
+
+  function showNextImage() {
+    //Oculata la imagen actual
+    items[currentIndex].classList.remove("active");
+    currentIndex = (currentIndex + 1) % items.length; // Incrementa el índice
+    items[currentIndex].classList.add("active"); // Muestra la siguiente imagen
+  }
+
+  function showPreviousImage() {
+    items[currentIndex].classList.remove("active"); // Oculta la imagen actual
+    currentIndex = (currentIndex - 1 + items.length) % items.length; // Retrocede
+    items[currentIndex].classList.add("active"); // Muestra la imagen anterior
+  }
+
+  // Cambia la imagen cada 3 segundos (3000 milisegundos)
+  setInterval(showNextImage, 3000);
+
+   // Asigna eventos a los botones
+  document.querySelector('.next').addEventListener('click', showNextImage);
+  document.querySelector('.prev').addEventListener('click', showPreviousImage);
+
+});
+
 // Usar el cart definido en cart.js
 products.forEach((product) => {
   const content = document.createElement("div");
