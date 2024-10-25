@@ -56,9 +56,9 @@ app.use(
   myconnection(
     mysql,
     {
-      host: "localhost",
+      host: "127.0.0.1",
       user: "root",
-      password: "Monito1234@",
+      password: "root",
       port: 3306,
       database: "e-commerce",
     },

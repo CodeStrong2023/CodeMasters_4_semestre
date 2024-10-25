@@ -19,10 +19,11 @@
                 <h1 class="text-3xl font-bold">PixelPoint</h1>
             </div>
             <ul class="flex space-x-8">
-                <li><a href="#" class="text-lg font-medium hover:text-gray-300">Productos</a></li>
+                <li><a href="#productos" class="text-lg font-medium hover:text-gray-300">Productos</a></li>
                 <li><a href="#" class="text-lg font-medium hover:text-gray-300">Nosotros</a></li>
+                <li><a href="#ofertas" class="text-lg font-medium hover:text-gray-300">Ofertas</a></li>
                 <li><a href="/logout" class="nav-link bg-red-500 hover:bg-red-700 py-2 px-4 rounded-md">Salir</a></li>
-            </ul>
+            </ul>            
         </nav>
     </header>
 
@@ -65,14 +66,14 @@
     </div>
 
     <!-- Productos -->
-    <div class="card-products-container">
+    <div class="card-products-container" id="productos">
         <h1 class="productos">Productos</h1>
         <div class="card-products" id="shopContent"></div>
     </div>
 
     <section class="offers-section py-8 bg-gray-100">
-      <div class="container mx-auto px-4">
-          <h1 class="ofertas-titulo">Ofertas Especiales</h1>
+      <div class="container mx-auto px-4" id="ofertas">
+          <h1 class="ofertas-titulo" >Ofertas Especiales</h1>
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="offerContent">
               <!-- Las tarjetas de productos en oferta se generarán aquí -->
           </div>
