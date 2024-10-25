@@ -58,9 +58,9 @@ app.use(
     {
       host: "localhost",
       user: "root",
-      password: "laujaz1706",
+      password: "Monito1234@",
       port: 3306,
-      database: "ecommerce",
+      database: "e-commerce",
     },
     "single"
   )
