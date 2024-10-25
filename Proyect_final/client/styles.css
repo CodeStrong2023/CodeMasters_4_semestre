@@ -8,16 +8,22 @@ html {
     scroll-behavior: smooth;
 }
 
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 body {
     font-family: "Audiowide", sans-serif;
 }
 
 .primary {
-    background-color: #0000FF !important;
+    background-color: #669bbb !important;
 }
 
 .nav {
-    background-color: #0000FF !important;
+    background-color: #669bbb !important;
     height: 50px;
 }
 
@@ -31,7 +37,7 @@ body {
 .carousel {
     display: flex;
     transition: transform 0.5s ease;
-    height: 350px;
+    height: 400px;
 }
   
 .carousel-item {
@@ -41,16 +47,14 @@ body {
     position: relative;
 }
 
-.carousel-item.active {
-    display: block;
-}
-
 .carousel-item img {
     width: 100%;
     height: 320px;
     object-fit: cover;
     display: block;
 }
+
+
 
 .prev, .next {
     position: absolute;
@@ -66,9 +70,18 @@ body {
 .prev { left: 10px; }
 .next { right: 10px; }
 
+.carousel-item.active {
+    display: block;
+}
+
 .categorias,
 .productos {
     font-size: 2rem;
+    
+}
+
+.presentacion-2{
+    background-color: #000000;
     
 }
 
@@ -87,7 +100,6 @@ body {
     font-size: 40px; /* Aumenta el tamaño del texto */
     font-weight: bold;
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Agrega sombra al texto */
-    border-bottom: 2px solid #0000FF; /* Línea debajo del título */
     padding-bottom: 20px; /* Aumenta el espacio adicional debajo del h1 */
     margin-bottom: 30px; /* Agrega margen inferior para más espacio */
     animation: elegant-blink 2s infinite; /* Añade el efecto de parpadeo más elegante */
@@ -112,13 +124,31 @@ body {
     margin-top: 10px; /* Espacio adicional arriba del h2 */
 }
 
+.card-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border: 2px solid black; /* Borde negro */
+    border-radius: 15px; /* Es opcional si quieres bordes redondeados */
+    background-color: #000000;
+}
+
+.card-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px 8px 0 0; /* Si los bordes son redondeados, solo aplica a las esquinas superiores */
+}
 
 .ofertas-titulo {
     font-size: 40px; /* Aumenta el tamaño del texto */
     font-weight: bold;
-    color: #0000FF; /* Mantiene el color original */
+    color: #669bbb; /* Mantiene el color original */
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Agrega sombra al texto */
-    border-bottom: 2px solid #0000FF; /* Línea debajo del título */
+    border-bottom: 2px solid #669bbb; /* Línea debajo del título */
     padding-bottom: 20px; /* Espacio adicional debajo del h1 (ajusta según necesites) */
     text-align: center; /* Asegúrate de que esté centrado */
     margin: 0; /* Elimina el margen por defecto */
@@ -144,7 +174,7 @@ body {
     height: 400px;
     background: #FFFFFF;
     border-radius: 20px;
-    box-shadow: 0 0 8px #0000FF;
+    box-shadow: 0 0 8px #669bbb;
     margin: 10px;
     padding: 10px 20px;
     display: flex;
@@ -198,12 +228,12 @@ body {
     border-radius: 20px;
     font-size: 18px;
     line-height: 40px;
-    border: 2px solid #0000FF;
+    border: 2px solid #669bbb;
     transition: color 0.2s;
 }
 
 .pequeña_tarjeta i:hover {
-    color: #0000FF;
+    color: #669bbb;
 }
 
 .product_text {
@@ -219,7 +249,7 @@ body {
 }
 
 .product_text p {
-    color: #0000FF;
+    color: #669bbb;
     line-height: 21px;
     margin: 8px 0;
 }
@@ -236,7 +266,7 @@ body {
 
 .product_text .btn {
     padding: 10px 20px;
-    background: #0000FF;
+    background: #669bbb;
     cursor: pointer;
     text-decoration: none;
 }

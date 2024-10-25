@@ -1,11 +1,15 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
-    "./index.html",         // Agrega esta línea si tienes un archivo HTML en la raíz
-    "./src/**/*.{js,ts,jsx,tsx}", // Ajusta esta línea según la estructura de tu proyecto
+    "./index.html",         // Asegúrate de que esto esté correcto según tu proyecto
+    "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        poppins: ['Inter', 'sans-serif'],  // Agrega la fuente aquí
+      },
+    },
   },
   plugins: [],
 };
