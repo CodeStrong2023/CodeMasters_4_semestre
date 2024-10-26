@@ -1,6 +1,36 @@
 const shopContent = document.getElementById("shopContent");
-const cart = [];
+const offerContent = document.getElementById("offerContent");
 
+// Función del carrusel
+document.addEventListener("DOMContentLoaded", () => {
+  let currentIndex = 0; // índice de la imagen actual
+  const items = document.querySelectorAll(".carousel-item"); // Selecciona todos los elementos del carrusel
+  
+  // Muestra la primera imagen
+  items[currentIndex].classList.add("active");
+
+  function showNextImage() {
+    // Oculta la imagen actual
+    items[currentIndex].classList.remove("active");
+    currentIndex = (currentIndex + 1) % items.length; // Incrementa el índice
+    items[currentIndex].classList.add("active"); // Muestra la siguiente imagen
+  }
+
+  function showPreviousImage() {
+    items[currentIndex].classList.remove("active"); // Oculta la imagen actual
+    currentIndex = (currentIndex - 1 + items.length) % items.length; // Retrocede
+    items[currentIndex].classList.add("active"); // Muestra la imagen anterior
+  }
+
+  // Cambia la imagen cada 3 segundos (3000 milisegundos)
+  setInterval(showNextImage, 3000);
+
+  // Asigna eventos a los botones
+  document.querySelector('.next').addEventListener('click', showNextImage);
+  document.querySelector('.prev').addEventListener('click', showPreviousImage);
+});
+
+// Usar los productos definidos en products.js
 products.forEach((product) => {
   const content = document.createElement("div");
   content.className = "card";
@@ -20,14 +50,13 @@ products.forEach((product) => {
         <div class="product_stars">
           ${generarEstrellas(product.stars)}
         </div>
-        <a href="#" class="btn">Añadir al carrito</a>
+        <button class="btn add-to-cart text-white" style="border-radius: 20px">Añadir al carrito</button>
       </div>
     </div>  
   `;
   shopContent.append(content);
-  
 
-  const buyButton = content.querySelector(".btn");
+  const buyButton = content.querySelector(".add-to-cart");
   
   buyButton.addEventListener("click", () => {
     const repeat = cart.some((repeatProduct) => repeatProduct.id === product.id);
@@ -37,6 +66,7 @@ products.forEach((product) => {
         if (prod.id === product.id) {
           prod.quanty++;
         }
+        return prod;
       });
     } else {
       cart.push({
@@ -45,13 +75,64 @@ products.forEach((product) => {
         price: product.price,
         quanty: 1,
         img: product.img,
-
       });
-      displayCartCounter();
     }
+    saveCart(); // Guardar en localStorage
+    updateCartCounter(); // Actualizar contador
   });
+});
 
-  // Función para generar las estrellas de calificación
+// Mostrar ofertas especiales
+offers.forEach((offer) => {
+  const offerCard = document.createElement("div");
+  offerCard.className = "card";
+  offerCard.innerHTML = `
+    <div class="tarjetas">
+      <div class="pequeña_tarjeta">
+        <i class="fa-solid fa-heart"></i>
+        <i class="fa-solid fa-share"></i>
+      </div>
+      <div class="image">  
+        <img src="${offer.img}">
+      </div> 
+      <div class="product_text"> 
+        <h3>${offer.productName}</h3>
+        <p><del>$${offer.originalPrice}</del> <strong>$${offer.price}</strong></p>
+        <div class="product_stars">
+          ${generarEstrellas(offer.stars)}
+        </div>
+        <button class="btn add-to-cart text-white" style="border-radius: 20px">Añadir al carrito</button>
+      </div>
+    </div>  
+  `;
+  offerContent.append(offerCard);
+
+  const buyButton = offerCard.querySelector(".add-to-cart");
+  
+  buyButton.addEventListener("click", () => {
+    const repeat = cart.some((repeatProduct) => repeatProduct.id === offer.id);
+
+    if (repeat) {
+      cart.map((prod) => {
+        if (prod.id === offer.id) {
+          prod.quanty++;
+        }
+        return prod;
+      });
+    } else {
+      cart.push({
+        id: offer.id,
+        productName: offer.productName,
+        price: offer.price,
+        quanty: 1,
+        img: offer.img,
+      });
+    }
+    saveCart(); // Guardar en localStorage
+    updateCartCounter(); // Actualizar contador
+  });
+});
+
 function generarEstrellas(stars) {
   const estrellasLlenas = Math.floor(stars);
   const mediaEstrella = stars % 1 !== 0;
@@ -69,10 +150,3 @@ function generarEstrellas(stars) {
 
   return htmlEstrellas;
 }
-
-// Función para actualizar el contador del carrito
-  function displayCartCounter() {
-  const cartCounter = document.getElementById("cart-counter");
-  cartCounter.innerText = cart.reduce((acc, prod) => acc + prod.quanty, 0);
-}
-});

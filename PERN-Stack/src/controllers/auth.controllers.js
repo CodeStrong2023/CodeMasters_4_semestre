@@ -17,13 +17,13 @@ export const signup = async (req, res)=> {
         console.log(result);
         res.cookie("token", token, {
             httpOnly: true,
-            sameSite: "nono",
-            maxAge: 60 * 60 * 24 *1000});
+            sameSite: "none",
+            maxAge: 60 * 60 * 24 *1000});//1 dia
 
         return res.json(result.rows[0]);
        
     } catch (error) {
-        if(error.code === "23585"){
+        if(error.code === "23505"){
             return res.status(400).json({menssage: "El correo ya está registrado"});
         }
         

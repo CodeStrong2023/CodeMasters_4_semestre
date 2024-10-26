@@ -9,7 +9,7 @@ import bodyParser from "body-parser";
 import cors from "cors";
 import dotenv from "dotenv";
 import { MercadoPagoConfig, Preference } from "mercadopago";
-import loginRoutes from "./routes/login.js";
+import loginRoutes from "./routes/login.js"
 
 // Inicialización de dotenv
 dotenv.config();
@@ -56,11 +56,11 @@ app.use(
   myconnection(
     mysql,
     {
-      host: "localhost",
-      user: "ecom_user",
-      password: "ecommercero",
-      port: 3306,
-      database: "ecommerce",
+      host: process.env.DB_HOST,
+      user: process.env.DB_USER,
+      password: process.env.DB_PASSWORD,
+      port: process.env.DB_PORT,
+      database: process.env.DB_NAME,
     },
     "single"
   )
