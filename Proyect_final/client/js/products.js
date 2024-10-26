@@ -3,7 +3,7 @@ const products = [
     {
         id: 1,
         productName: "Samsung",
-        price: 900000,
+        price: 90,
         quanty: 1,
         img: "/media/img/net01-.jpeg",
         stars: 5,
@@ -11,7 +11,7 @@ const products = [
     {
         id: 2,
         productName: "Lenovo",
-        price: 600000,
+        price: 60,
         quanty: 1,
         img: "/media/img/net-02.jpg",
         stars: 4.5,
@@ -19,7 +19,7 @@ const products = [
     {
         id: 3,
         productName: "DELL",
-        price: 500.000,
+        price: 50,
         quanty: 1,
         img: "/media/img/aur-01.jpg",
         stars: 3,
@@ -27,7 +27,7 @@ const products = [
     {
         id: 4,
         productName: "Samsung",
-        price: 700000,
+        price: 70,
         quanty: 1,
         img: "/media/img/celu1.jpeg",
         stars: 4.5,
@@ -35,7 +35,7 @@ const products = [
     {
         id: 5,
         productName: "Samsung",
-        price: 2036,
+        price: 206,
         quanty: 1,
         img: "/media/img/celu4.jpeg",
         stars: 2.5,
@@ -43,7 +43,7 @@ const products = [
     {
         id: 6,
         productName: "Samsung",
-        price: 400.000,
+        price: 40,
         quanty: 1,
         img: "/media/img/celu5.jpeg",
         stars: 5,
@@ -51,7 +51,7 @@ const products = [
     {
         id: 7,
         productName: "Samsung",
-        price: 353646,
+        price: 35,
         quanty: 1,
         img: "/media/img/celu6.jpeg",
         stars: 4,
@@ -59,7 +59,7 @@ const products = [
     {
         id: 8,
         productName: "Samsung",
-        price: 7034634,
+        price: 74,
         quanty: 1,
         img: "/media/img/celu7.jpeg",
         stars: 5,
@@ -67,7 +67,7 @@ const products = [
     {
         id: 9,
         productName: "Samsung",
-        price: 703636,
+        price: 76,
         quanty: 1,
         img: "/media/img/celu8.jpeg",
         stars: 4.5,
@@ -75,7 +75,7 @@ const products = [
     {
         id: 10,
         productName: "Ps5",
-        price: 7045,
+        price: 75,
         quanty: 1,
         img: "/media/img/Ps5.png",
         stars: 5,
@@ -83,7 +83,7 @@ const products = [
     {
         id: 11,
         productName: "Sony",
-        price: 70976,
+        price: 76,
         quanty: 1,
         img: "/media/img/aur-02.jpg",
         stars: 3,
@@ -91,7 +91,7 @@ const products = [
     {
         id: 12,
         productName: "Samsung",
-        price: 7000,
+        price: 70,
         quanty: 1,
         img: "/media/img/aur-03.png",
         stars: 3.5,
@@ -103,7 +103,7 @@ const offers = [
     {
         id: 13,
         productName: "Producto en Oferta 1",
-        price: 800, // Precio con descuento
+        price: 80, // Precio con descuento
         originalPrice: 1000, // Precio original
         quanty: 1,
         img: "/media/img/Ps5.png",
@@ -116,7 +116,7 @@ const offers = [
     {
         id: 14,
         productName: "Producto en Oferta 2",
-        price: 600, // Precio con descuento
+        price: 60, // Precio con descuento
         originalPrice: 1000, // Precio original
         quanty: 1,
         img: "/media/img/aur-03.png",
@@ -128,7 +128,7 @@ const offers = [
     {
         id: 15,
         productName: "Producto en Oferta 3",
-        price: 600, // Precio con descuento
+        price: 60, // Precio con descuento
         originalPrice: 1000, // Precio original
         quanty: 1,
         img: "/media/img/celu1.jpeg",
