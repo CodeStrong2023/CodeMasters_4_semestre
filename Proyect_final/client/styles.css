@@ -105,6 +105,19 @@ body {
     animation: elegant-blink 2s infinite; /* Añade el efecto de parpadeo más elegante */
 }
 
+.card-category {
+    border: 2px solid #669bbb;
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-category:hover {
+    transform: translateY(-20px); /* Levanta la tarjeta */
+    box-shadow: 0 8px 16px rgba(4, 3, 3, 0.553); /* Agrega sombra */
+}
+
 /* Efecto de parpadeo más elegante */
 @keyframes elegant-blink {
     0%, 100% {
@@ -131,9 +144,8 @@ body {
     width: 100%;
     height: 100%;
     overflow: hidden;
-    border: 2px solid black; /* Borde negro */
-    border-radius: 15px; /* Es opcional si quieres bordes redondeados */
-    background-color: #000000;
+    border: 1px solid #858c90;
+    border-radius: 15px;
 }
 
 .card-container img {
@@ -332,6 +344,7 @@ body {
     z-index: 1000;
     max-height: 80vh;
     overflow-y: auto;
+    border-radius: 20px;
 }
 
 .modal-container::-webkit-scrollbar {
@@ -360,9 +373,10 @@ body {
     align-items: center;
     justify-content: space-between;
     margin-bottom: 20px;
-    padding: 10px;
     background-color: #f9f9f9;
     border-radius: 8px;
+    border: 2px solid #858c90;
+    padding: 20px;
 }
 
 .product-img {
@@ -440,4 +454,76 @@ body {
     .card .tarjetas {
         width: 100%; /* Hace que la tarjeta ocupe el 100% del ancho en pantallas más pequeñas */
     }
+}
+
+/* Estilo del footer */
+.footer {
+    background-color: #333;
+    color: #f1f1f1;
+    padding: 40px 20px;
+    font-family: Arial, sans-serif;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* Secciones del footer */
+.footer-section {
+    flex: 1;
+    min-width: 200px;
+    padding: 10px;
+}
+
+.footer-section h3 {
+    margin-bottom: 15px;
+    font-size: 18px;
+    color: #669bbb;
+}
+
+.footer-section p, .footer-section ul, .footer-section a {
+    font-size: 14px;
+    color: #f1f1f1;
+    text-decoration: none;
+}
+
+.footer-section a:hover {
+    color: #669bbb;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 10px;
+}
+
+/* Redes sociales */
+.social-icons a {
+    display: inline-block;
+    color: #f1f1f1;
+    font-size: 18px;
+    margin-right: 10px;
+    transition: color 0.3s;
+}
+
+.social-icons a:hover {
+    color: #669bbb;
+}
+
+/* Parte inferior del footer */
+.footer-bottom {
+    text-align: center;
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #669bbb;
+    font-size: 14px;
+    color: #aaa;
 }

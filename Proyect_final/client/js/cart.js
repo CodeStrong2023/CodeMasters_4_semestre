@@ -27,7 +27,7 @@ const displayCart = () => {
   modalHeader.className = "modal-header";
 
   const modalClose = document.createElement("div");
-  modalClose.innerText = "❌";
+  modalClose.innerText = "X";
   modalClose.className = "modal-close";
   modalHeader.append(modalClose);
 
@@ -60,8 +60,8 @@ const displayCart = () => {
                 <span class="quantity-input">${product.quanty}</span>
                 <span class="quantity-btn-increase">+</span>
             </div>
-            <div class="price">${product.price * product.quanty} $</div>
-            <div class="delete-product">❌</div>
+            <div class="price pl-1">${product.price * product.quanty} $</div>
+            <div class="delete-product m-1">X</div>
         </div>
       `;
       modalContainer.append(modalBody);
@@ -93,7 +93,7 @@ const displayCart = () => {
     modalFooter.className = "modal-footer";
     modalFooter.innerHTML = `
       <div class="total-price">Total: ${calculateTotalPrice()} $</div>
-      <button class="btn-primary" id="checkout-btn">Ir a pagar</button>
+      <button class="btn" id="checkout-btn">Ir a pagar</button>
       <div id="wallet_container"></div>
     `;
     modalContainer.append(modalFooter);

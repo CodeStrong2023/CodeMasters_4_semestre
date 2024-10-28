@@ -15,7 +15,7 @@
 
 <body class="font-sans">
     <header>
-        <nav class="flex justify-between nav items-center py-5 text-white px-6 shadow-md">
+        <nav class="flex justify-between nav items-center py-5 text-white px-6 shadow-md" id="nav">
             <div class="flex items-center">
                 <h1 class="text-3xl font-bold">PixelPoint</h1>
             </div>
@@ -60,14 +60,20 @@
             CATEGORIAS
           </h1>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 ml-16">
-            <div class="card-container">
-                <img src="./media/img/PCelulares.png" alt="Notebook">
+            <div class="card-container card-category">
+                <a href="#productos">
+                    <img src="./media/img/Auriculares.png" alt="Auriculares">
+                </a>
             </div>
-            <div class="card-container">
-                <img src="./media/img/Pinalambricos.png" alt="Notebook">
+            <div class="card-container card-category">
+                <a href="#productos">
+                    <img src="./media/img/Celulares.png" alt="Celulares">
+                </a>
             </div>
-            <div class="card-container">
-                <img src="./media/img/PAuriculares.png" alt="Notebook">
+            <div class="card-container card-category">
+                <a href="#productos">
+                    <img src="./media/img/Compu.png" alt="Compu">
+                </a>
             </div>                   
         </div>
     </div>
@@ -85,10 +91,11 @@
      </section>
     
 
-    <section class="offers-section py-8 bg-gray-100">
-      <div class="container mx-auto px-4" id="ofertas">
-          <h1 class="ofertas-titulo" >Ofertas Especiales</h1>
+    <section class="container">
+      <div class="text-center mb-10" id="ofertas">
+          <h1 class="text-4xl font-bold text-gray-700 font-montserrat tracking-wide text-center m-10" >OFERTAS ESPECIALES</h1>
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="offerContent">
+
               <!-- Las tarjetas de productos en oferta se generarán aquí -->
           </div>
       </div>
@@ -124,6 +131,42 @@
         animation: scroll 18s linear infinite;
       }
     </style>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <!-- Información de contacto -->
+            <div class="footer-section contact">
+                <h3>Contacto</h3>
+                <p><i class="fas fa-phone"></i> +123 456 7890</p>
+                <p><i class="fas fa-envelope"></i> code.master@ejemplo.com</p>
+            </div>
+
+            <!-- Enlaces rápidos -->
+            <div class="footer-section links">
+                <h3>Enlaces Rápidos</h3>
+                <ul>
+                    <li><a href="#nav">Inicio</a></li>
+                    <li><a href="#productos">Productos</a></li>
+                    <li><a href="#nosotros">Sobre Nosotros</a></li>
+                </ul>
+            </div>
+
+            <!-- Redes Sociales -->
+            <div class="footer-section social">
+                <h3>Síguenos</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 CodeMaster.com | Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
 
 </body>
 </html>
