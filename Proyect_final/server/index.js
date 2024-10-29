@@ -57,8 +57,8 @@ app.use(
     mysql,
     {
       host: "localhost",
-      user: "myuser",
-      password: "Vir48910",
+      user: "root",
+      password: "laujaz1706",
       port: 3306,
       database: "ecommerce",
     },
