@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>StyleHub - {{pageTitle}}</title>
-    <link rel="icon" type="image/png" href="media/logo.png">
+    <link rel="icon" type="image/png" href="media/img/logo-ecommerce.png">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css" />
@@ -12,19 +12,19 @@
 </head>
 <body class="bg-gray-50">
     <header>
-        <nav class="flex py-5 bg-green-500 text-white px-6">
+        <nav class="flex py-5 bg-blue-500 text-white px-6">
             <div class="w-1/2 flex items-center">
-                <img src="media/logo.png" alt="StyleHub Logo" class="h-10 w-10 mr-2">
-                <h1 class="text-2xl font-bold">StyleHub</h1>
+                <img src="media/img/logo-ecommerce.png" alt="StyleHub Logo" class="h-10 w-10 mr-2">
+                <h1 class="text-2xl font-bold">PixelPoint</h1>
             </div>
 
             <ul class="w-1/2 px-16 ml-auto flex justify-end items-center">
-                <li class="nav-item px-4">
+                <!--<li class="nav-item px-4">
                     <a href="#" class="text-lg font-medium hover:text-gray-200 transition-colors duration-300">Inicio</a>
                 </li>
                 <li class="nav-item px-4">
                     <a href="#" class="text-lg font-medium hover:text-gray-200 transition-colors duration-300">Acerca de</a>
-                </li>
+                </li>!-->
                 {{#if name}}
                 <li class="nav-item px-4">
                     <p class="text-lg font-medium">{{name}}</p>
@@ -34,7 +34,7 @@
                 </li>
                 {{else}}
                 <li class="nav-item px-4">
-                    <a href="/login" class="nav-link font-semibold hover:bg-green-700 py-2 px-4 rounded-md transition-colors duration-300">Login</a>
+                    <a href="/login" class="nav-link font-semibold border-2 border-white hover:bg-white hover:text-green-700 py-2 px-4 rounded-md transition-colors duration-300">Login</a>
                 </li>
                 <li class="nav-item px-4">
                     <a href="/register" class="nav-link font-semibold border-2 border-white hover:bg-white hover:text-green-700 py-2 px-4 rounded-md transition-colors duration-300">Register</a>
