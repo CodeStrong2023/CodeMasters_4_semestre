@@ -1,5 +1,9 @@
+//Lógica del Carrito de Compras
+
+// Inicialización del carrito obteniendo datos guardados en localStorage o asignando un array vacío
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
+// Selección de elementos HTML necesarios para la interfaz del carrito
 const modalContainer = document.getElementById("modal-container");
 const modalOverlay = document.getElementById("modal-overlay");
 const cartBtn = document.getElementById("cart-btn");
@@ -10,19 +14,20 @@ const saveCart = () => {
   localStorage.setItem("cart", JSON.stringify(cart));
 };
 
-// Función para actualizar el contador del carrito
+// Función para actualizar el contador del carrito en la interfaz
 const updateCartCounter = () => {
   const totalQuanty = cart.reduce((acc, prod) => acc + prod.quanty, 0);
   cartCounter.textContent = totalQuanty;
   cartCounter.style.display = totalQuanty > 0 ? "block" : "none";
 };
 
+// Muestra el carrito en un modal
 const displayCart = () => {
   modalContainer.innerHTML = ""; // Limpiar el contenido previo del modal
   modalContainer.style.display = "block";
   modalOverlay.style.display = "block";
 
-  // modal Header
+  // modal Header, Creación del encabezado del modal
   const modalHeader = document.createElement("div");
   modalHeader.className = "modal-header";
 
@@ -31,6 +36,7 @@ const displayCart = () => {
   modalClose.className = "modal-close";
   modalHeader.append(modalClose);
 
+  // Cierra el modal al hacer clic en la "X"
   modalClose.addEventListener("click", () => {
     modalContainer.style.display = "none";
     modalOverlay.style.display = "none";
@@ -44,7 +50,7 @@ const displayCart = () => {
 
   modalContainer.append(modalHeader);
 
-  // modal Body
+  // modal Body, Muestra los productos si el carrito no está vacío
   if (cart.length > 0) {
     cart.forEach((product) => {
       const modalBody = document.createElement("div");
@@ -66,6 +72,7 @@ const displayCart = () => {
       `;
       modalContainer.append(modalBody);
 
+       // Disminuye la cantidad de producto o lo elimina si es 1
       const decrese = modalBody.querySelector(".quantity-btn-decrease");
       decrese.addEventListener("click", () => {
         if (product.quanty > 1) {
@@ -76,19 +83,21 @@ const displayCart = () => {
         }
       });
 
+      // Aumenta la cantidad del producto
       const increse = modalBody.querySelector(".quantity-btn-increase");
       increse.addEventListener("click", () => {
         product.quanty++;
         updateProductQuantity(product.id, product.quanty); // Optimización
       });
 
+      // Elimina el producto del carrito
       const deleteProduct = modalBody.querySelector(".delete-product");
       deleteProduct.addEventListener("click", () => {
         deleteCartProduct(product.id);
       });
     });
 
-    // modal Footer
+    // modal Footer, Pie del modal con el total y botón de pago
     const modalFooter = document.createElement("div");
     modalFooter.className = "modal-footer";
     modalFooter.innerHTML = `
@@ -98,7 +107,7 @@ const displayCart = () => {
     `;
     modalContainer.append(modalFooter);
 
-    // Configuración de MercadoPago
+    // Configuración de MercadoPago para el botón de pago
     const mp = new MercadoPago("APP_USR-50a86a18-e45d-4225-b49a-fc1f782a6bb6", {
       locale: "es-AR",
     });
@@ -106,6 +115,7 @@ const displayCart = () => {
     const checkoutBtn = document.getElementById("checkout-btn");
     checkoutBtn.addEventListener("click", () => handleCheckout(mp));
   } else {
+     // Mensaje cuando el carrito está vacío
     const emptyCartMessage = document.createElement("div");
     emptyCartMessage.className = "empty-cart";
     emptyCartMessage.innerHTML = `<h4>Tu carrito está vacío</h4>`;
@@ -113,6 +123,8 @@ const displayCart = () => {
   }
 };
 
+
+// Actualiza la cantidad de un producto específico en el carrito
 const updateProductQuantity = (id, quanty) => {
   const product = cart.find((item) => item.id === id);
   if (product) {
@@ -123,6 +135,8 @@ const updateProductQuantity = (id, quanty) => {
   }
 };
 
+
+// Elimina un producto del carrito por su id
 const deleteCartProduct = (id) => {
   cart = cart.filter((product) => product.id !== id);
   saveCart();
@@ -130,11 +144,13 @@ const deleteCartProduct = (id) => {
   updateCartCounter();
 };
 
+
+// Calcula el precio total del carrito
 const calculateTotalPrice = () => {
   return cart.reduce((acc, product) => acc + product.price * product.quanty, 0);
 };
 
-// Función de checkout
+// Función de checkout, Maneja el proceso de pago utilizando la API de MercadoPago
 const handleCheckout = async (mp) => {
   const total = calculateTotalPrice();
   if (total === 0) {
@@ -142,7 +158,8 @@ const handleCheckout = async (mp) => {
     return;
   }
 
-  // Controlar errores en el fetch
+  
+  // Creación de preferencia de pago
   try {
     const response = await fetch("http://localhost:3000/create_preference", {
       method: "POST",
@@ -165,6 +182,7 @@ const handleCheckout = async (mp) => {
 };
 
 
+// Crea el botón de pago en el contenedor "wallet_container"
 const createCheckoutButton = (mp, preferenceId) => {
   // Limpiar el contenedor antes de crear un nuevo botón
   const walletContainer = document.getElementById("wallet_container");
@@ -178,13 +196,15 @@ const createCheckoutButton = (mp, preferenceId) => {
   });
 };
 
+
+// Genera una descripción del carrito para el proceso de pago
 const generateCartDescription = () => {
   return cart
     .map((product) => `${product.productName} (x${product.quanty})`)
     .join(", ");
 };
 
-// Event Listeners
+// Event Listeners, Muestra el carrito al hacer clic en el botón del carrito
 cartBtn.addEventListener("click", displayCart);
 
 // Cerrar el modal al hacer clic fuera
