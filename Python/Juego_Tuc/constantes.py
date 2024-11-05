@@ -6,10 +6,11 @@ SCREEN_WIDTH = 1700
 SCREEN_HEIGHT = 1700
 
 # Ruta de ls assets
-ASSETS_PATH = "C:\Users\Usuario\Desktop\SEMESTRES\CodeMasters_4_semestre\Python\Juego_Tuc\assets"
+ASSETS_PATH = r"C:\Users\Virginia\Downloads\pre tec programacion\seguno año\4to semestre\laboratorio4\CodeMasters_4_semestre\Python\Juego_Tuc\assets"
 
-#Rutas de archivos
-IMPERIAL_MARCH_PATH = f'{ASSETS_PATH}/sounds/ Imperial March - kenobi.mp3'
-START_IMAGE_PATH = f'{ASSETS_PATH}/images/inicio/star.png'
-ESTRELLA_PATH =  f'{ASSETS_PATH}/images/inicio/estrella.png'
-FONDO1_PATH = f'{ASSETS_PATH}/images/fondo1.jpg'
+
+# ruta de los archivos
+IMPERIAL_MARCH_PATH = f'{ASSETS_PATH}/audio/Imperial March.wav'
+START_IMAGE_PATH = f'{ASSETS_PATH}/images/star.png'
+ESTRELLA_PATH = f'{ASSETS_PATH}/images/laser1.png'
+FONDO1_PATH = f'{ASSETS_PATH}/images/fondo001.jpeg'
