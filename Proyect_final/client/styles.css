@@ -527,3 +527,82 @@ body {
     font-size: 14px;
     color: #aaa;
 }
+
+#sobre-nosotros {
+    background-color: #f9f9f9;
+    padding: 40px;
+    text-align: center;
+}
+
+.header h2 {
+    font-size: 2.5em;
+    color: #333;
+}
+
+.header p {
+    font-size: 1.2em;
+    color: #666;
+}
+
+.team-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.team-member {
+    flex: 1;
+    max-width: 300px;
+    margin: 10px;
+    text-align: center;
+}
+
+.image-container {
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    border-radius: 50%;
+    margin: auto;
+}
+
+.image-container img {
+    width: 100%;
+    height: auto; 
+    object-fit: cover; 
+}
+
+
+.social-buttons {
+    margin-top: 10px;
+}
+
+.btn {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background-color: #007bff;
+    color: white;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 40px; 
+    margin: 5px; 
+    transition: background-color 0.3s; 
+}
+
+.btn.gmail {
+    background-color: #DB4437; 
+}
+
+.btn.github {
+    background-color: #333; 
+}
+
+.btn.linkedin {
+    background-color: #0077B5; 
+}
+
+.btn:hover {
+    opacity: 0.8; 
+}
+
